@@ -7,7 +7,7 @@ API repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusk
 Iterations
 Iteration 1
 Start Iteration 1 ...
-
+![page 1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/page1.png)
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
