@@ -9,7 +9,7 @@ import { Route, Switch } from "react-router-dom"
 
 import NavBar from "./components/Navbar"
 
-function App() {
+export default function App() {
   return (
     <div>
       <NavBar />
@@ -20,5 +20,3 @@ function App() {
       </Switch>
     </div>);
 }
-
-export default App;

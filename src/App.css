@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 :root {
-  --primaryColor: #af9a7d;
+  --primaryColor: #86c4ba;
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
   --mainBlack: #222;
@@ -15,6 +15,7 @@
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
   --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
 }
+
 /* globals */
 body {
   padding-top: 66px;
@@ -87,6 +88,7 @@ h6 {
   letter-spacing: var(--mainSpacing);
 }
 /* end of globals */
+
 /* Navbar */
 .navbar {
   position: fixed;
@@ -96,6 +98,7 @@ h6 {
   padding: 0.75rem 2rem;
   background: var(--offWhite);
   z-index: 1;
+  text-decoration: underline;
 }
 .nav-header {
   display: flex;
@@ -159,7 +162,7 @@ h6 {
 /* Hero */
 .defaultHero,
 .roomsHero {
-  min-height: 740px;
+  min-height: 650px;
   background: url("./images/DefaultBcg.jpeg") center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -182,7 +185,7 @@ h6 {
   letter-spacing: var(--mainSpacing);
 }
 .banner h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 .banner div {
   width: 10rem;
@@ -211,10 +214,11 @@ h6 {
   }
 }
 /* End of Banner */
+
 /* Title */
 .section-title {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 .section-title h4 {
   font-size: 2rem;
@@ -230,15 +234,15 @@ h6 {
 }
 /* end of Title */
 
-/* services */
-.services {
-  padding: 5rem 0;
+/* features */
+.features {
+  padding: 1rem 0;
 }
-.services {
+.features {
   background: var(--darkGrey);
   text-align: center;
 }
-.services-center {
+.features-center {
   width: 90vw;
   margin: 0 auto;
   display: grid;
@@ -246,32 +250,33 @@ h6 {
   grid-row-gap: 2rem;
   grid-column-gap: 50px;
 }
-.service span {
+.features span {
   display: inline-block;
   color: var(--primaryColor);
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
-.services h6 {
+.features h6 {
   letter-spacing: var(--mainSpacing);
 }
-.services p {
+.features p {
   width: 80%;
   margin: 0 auto;
 }
 @media screen and (min-width: 992px) {
-  .services-center {
+  .features-center {
     width: 95vw;
     max-width: 1170px;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  .services p {
+  .features p {
     width: 100%;
   }
 }
-/*end of services */
+/*end of features */
+
 /* featured rooms */
 
 .featured-rooms {
