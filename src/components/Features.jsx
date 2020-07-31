@@ -25,7 +25,7 @@ export default class Features extends Component {
     render() {
         return (
             <section className="features">
-                <Title title="features" />
+                <Title title="FEATURES" />
                 <div className="features-center">
                     {this.state.features.map((item, index) => {
                         return (

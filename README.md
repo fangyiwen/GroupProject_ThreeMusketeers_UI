@@ -1,10 +1,34 @@
 UI Repo for Project: Explore World Heritage Sites
 Team members: Yiwen Fang, Peng Hao, Dong Liu
 - Create a UNESCO viewing website by various React components, which provides functions for users to login and logout, browse locations of interest on embedded Google Maps, and comments on various sites.
+
+- react-icon, react-router
   
 UI repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI
 
 API repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_API
+
+UI Folder Structure
+├── UNESCO_UI
+│	├── public
+│	│	├── favicon.ico
+│	│	├── index.html
+│	├── src
+│	│	├── App.css
+│	│	├── App.js
+│	│	├── index.js
+│	│	├── components
+│	│	│   ├── Banner.jsx
+│	│	│   ├── Features.jsx
+│	│	│   ├── Hero.jsx
+│	│	│   ├── MapContainer.jsx
+│	│	│   ├── Navbar.jsx
+│	│	│   ├── SiteContainer.jsx
+│	│	│   ├── Title.jsx
+│	│	├── Pages
+│	│	│   ├── Home.js
+│	│	│   ├── SingleSite.js
+│	│	│   ├── Sites.js
 
 Iterations
 Iteration 1
