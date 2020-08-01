@@ -25,20 +25,22 @@ export default class SiteContainer extends Component {
             },
             {
                 photoLink: pic4,
-                title: "Heritage Sits Statistics",
+                title: "Colosseum",
                 info: "Lorem Ipsum"
             }
         ]
     }
     render() {
         return (
-            <section className="features">
-                <Title title="FEATURES" />
-                <div className="features-center">
+            <section className="site-container">
+                <Title title="Popular Heritage Sites" />
+                <div className="site-container-center">
                     {this.state.sites.map((item, index) => {
                         return (
-                            <article key={index} className="features">
-                                <span><img src={item.photoLink}  alt="photos" /></span>
+                            <article key={index} className="site-container">
+                                <span>
+                                    <img src={item.photoLink} alt="photos" />
+                                </span>
                                 <h6>{item.title}</h6>
                                 <p>{item.info}</p>
                             </article>
