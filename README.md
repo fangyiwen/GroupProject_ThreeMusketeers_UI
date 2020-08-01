@@ -1,14 +1,12 @@
 UI Repo for Project: Explore World Heritage Sites
 Team members: Yiwen Fang, Peng Hao, Dong Liu
-- Create a UNESCO viewing website by various React components, which provides functions for users to login and logout, browse locations of interest on embedded Google Maps, and comments on various sites.
 
-- react-icon, react-router
-  
 UI repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI
 
 API repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_API
 
-UI Folder Structure
+UI Folder Structure - Iteration 1
+```
 ├── UNESCO_UI
 │	├── public
 │	│	├── favicon.ico
@@ -25,16 +23,29 @@ UI Folder Structure
 │	│	│   ├── Navbar.jsx
 │	│	│   ├── SiteContainer.jsx
 │	│	│   ├── Title.jsx
-│	│	├── Pages
+│	│	├── pages
 │	│	│   ├── Home.js
 │	│	│   ├── SingleSite.js
 │	│	│   ├── Sites.js
+```
 
 Iterations
 Iteration 1
-Start Iteration 1 ...
-![page 1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/page1.png)
+![page 1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page1.png)
 
+![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page2.png)
+
+- For iteration 1, a boilerplate was first created by npx react-create-app. Front-end components are added under src/components folder, which comprise of both functional and class components depending on the requirement for state change. A separate src/pages folder includes three internal pages for the project.
+- A Google Maps API is included in the home page, more specific functions and synchronization with backend database are yet to be implemented during next phase of the project.
+- React-router component is used for navigating internally in the website.
+
+- Reference: css stylesheet adapted from : https://github.com/john-smilga/setup-files-react-beach-resort
+
+Iteration 2 To Dos:
+- Add login and logout components and functionalities through Google authentication similar to the approach given in the MERN Stack book.
+- On page 1(home page), connect UNESCO geographic data with embedded Google Maps API, which displays the location pins of various world heritage sites, add search and filter options for user to narrow the map scope.
+- On page 2 (view select sites), provide comments and bookmark functions for user who logs into the website, and synchronize data with backend database.
+  
 ---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
