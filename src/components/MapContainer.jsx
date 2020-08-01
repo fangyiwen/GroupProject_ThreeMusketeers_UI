@@ -9,9 +9,6 @@ export class MapContainer extends Component {
 
           <Marker onClick={this.onMarkerClick}
             name={'Current location'} />
-
-
-
         </Map>
       </div>
 
@@ -20,5 +17,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ('AIzaSyDA3YrmtaWD5_DcNhXUZGM5_qoncmZUDCA')
+  apiKey: ('AIzaSyB2GEsGixSm9xrawPeXgzMmfoGjCkRS2WA')
 })(MapContainer)
