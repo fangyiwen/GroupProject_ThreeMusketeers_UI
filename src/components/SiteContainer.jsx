@@ -39,7 +39,11 @@ export default class SiteContainer extends Component {
                         return (
                             <article key={index} className="site-container">
                                 <span>
-                                    <img src={item.photoLink} alt="photos" />
+                                    <img src={item.photoLink} alt="photos" />\
+                                    <!-- Google static map
+                                    <img src={"https://maps.googleapis.com/maps/api/staticmap?center=The+Great+Pyramid+of+Giza&zoom=13&size=600x300&maptype=roadmap\n" +
+                                    "&markers=color:blue%7Clabel:S%7C40.702147,-74.015794\n" +
+                                    "&key=AIzaSyB2GEsGixSm9xrawPeXgzMmfoGjCkRS2WA"} /> -->
                                 </span>
                                 <h6>{item.title}</h6>
                                 <p>{item.info}</p>
