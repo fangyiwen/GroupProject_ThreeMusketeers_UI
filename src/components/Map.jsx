@@ -6,6 +6,19 @@ import mapStyles from "../mapStyles";
 export default function Map() {
     const [selectedPark, setSelectedPark] = useState(null);
 
+    useEffect(() => {
+        const listener = e => {
+          if (e.key === "Escape") {
+            setSelectedPark(null);
+          }
+        };
+        window.addEventListener("keydown", listener);
+    
+        return () => {
+          window.removeEventListener("keydown", listener);
+        };
+      }, []);
+    
     return (
         <GoogleMap
             defaultZoom={10}

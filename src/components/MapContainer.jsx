@@ -1,7 +1,6 @@
 import React from "react";
-import { withGoogleMap, withScriptjs, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import { withGoogleMap, withScriptjs } from "react-google-maps";
 import Map from "../components/Map"
-
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
