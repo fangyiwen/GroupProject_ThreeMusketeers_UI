@@ -25,8 +25,9 @@ export default class Navbar extends Component {
 
           <ul className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}>
             <li><Link to="/">Home</Link></li>
+            <li><Link to="/search">Search Heritage Sites</Link></li>
             <li><Link to="/sites">View Select Sites</Link></li>
-            <GoogleBtn/>
+            <GoogleBtn />
           </ul>
         </div>
       </nav>

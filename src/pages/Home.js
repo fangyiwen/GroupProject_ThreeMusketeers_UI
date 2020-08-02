@@ -16,8 +16,6 @@ export default function Home() {
            </Banner>
         </Hero>
         <Features />
-        
-        <MapContainer />
         </React.Fragment>
         
     );
