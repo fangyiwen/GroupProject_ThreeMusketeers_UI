@@ -330,6 +330,19 @@ h6 {
 }
 /*end of site-container */
 
+/* map marker*/
+.marker-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.marker-btn img {
+  width: 20px;
+  height: 20px;
+}
+/*end of map marker*/
+
 /* featured rooms */
 
 .featured-rooms {

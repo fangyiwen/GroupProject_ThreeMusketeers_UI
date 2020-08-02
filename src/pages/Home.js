@@ -3,7 +3,6 @@ import Hero from "../components/Hero";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import Features from '../components/Features';
-import MapContainer from '../components/MapContainer'
 
 export default function Home() {
     return (
