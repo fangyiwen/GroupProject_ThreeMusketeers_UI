@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { FaAlignRight } from 'react-icons/fa';
 import logo from '../images/logo.svg';
-import GoogleBtn from "./GoogleBtn";
+
 
 export default class Navbar extends Component {
   state = {
@@ -27,7 +27,7 @@ export default class Navbar extends Component {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/search">Heritage Site Map</Link></li>
             <li><Link to="/sites">View Select Sites</Link></li>
-            <GoogleBtn />
+            <li><Link to="/auth">log in</Link></li>
           </ul>
         </div>
       </nav>
