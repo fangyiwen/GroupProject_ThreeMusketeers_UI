@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import * as siteData from "../data/world-heritage-unesco-list.json";
+import * as siteData from "../data/world-heritage-unesco-list_reduced.json";
 
 export default function App() {
     const [viewport, setViewport] = useState({
-        latitude: 32.4279,
-        longitude: 53.6880,
+        latitude: 46.8182,
+        longitude: 8.2275,
         width: "100vw",
         height: "100vh",
-        zoom: 2
+        zoom: 1.8
     });
 
     const [selectedPark, setSelectedPark] = useState(null);
