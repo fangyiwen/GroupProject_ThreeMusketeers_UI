@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "The Great Wall",
+        "DESCRIPTION": "In c. 220 B.C., under Qin Shi Huang, sections of earlier fortifications were joined together to form a united defence system against invasions from the north. Construction continued up to the Ming dynasty, when the Great Wall became the world's largest military structure. Its historic and strategic importance is matched only by its architectural significance."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [40.41667, 116.08333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "Memphis and its Necropolis – the Pyramid Fields from Giza to Dahshur",
+        "DESCRIPTION": "The capital of the Old Kingdom of Egypt has some extraordinary funerary monuments, including rock tombs, ornate mastabas, temples and pyramids. In ancient times, the site was considered one of the Seven Wonders of the World."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [29.976480, 116.08333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "The Taj Mahal",
+        "DESCRIPTION": "An immense mausoleum of white marble, built in Agra between 1631 and 1648 by order of the Mughal emperor Shah Jahan in memory of his favourite wife, the Taj Mahal is the jewel of Muslim art in India and one of the universally admired masterpieces of the world's heritage."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [[27.173891,	78.042068]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NAME": "The Colosseum",
+        "DESCRIPTION": "The Colosseum is an ancient Roman amphitheater constructed in the 80 AD (under the rule of Titus), made of stones and concrete."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [41.890251, 12.492373]
+      }
+    }
+  ]
+}
