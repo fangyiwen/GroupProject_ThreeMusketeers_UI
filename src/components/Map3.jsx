@@ -11,12 +11,12 @@ export default function App() {
         zoom: 1.8
     });
 
-    const [selectedPark, setSelectedPark] = useState(null);
+    const [selectedSite, setSelectedSite] = useState(null);
 
     useEffect(() => {
         const listener = e => {
             if (e.key === "Escape") {
-                setSelectedPark(null);
+                setSelectedSite(null);
             }
         };
         window.addEventListener("keydown", listener);
@@ -29,6 +29,7 @@ export default function App() {
     return (
         <div>
             <ReactMapGL
+                className="map"
                 {...viewport}
                 mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
                 mapStyle="mapbox://styles/tctcld/ckdgizl7b09fv1lrm54j308z1"
@@ -36,35 +37,35 @@ export default function App() {
                     setViewport(viewport);
                 }}
             >
-                {siteData.features.map(park => (
+                {siteData.features.map(site => (
                     <Marker
-                        key={park.recordid}
-                        latitude={park.geometry.coordinates[1]}
-                        longitude={park.geometry.coordinates[0]}
+                        key={site.recordid}
+                        latitude={site.geometry.coordinates[1]}
+                        longitude={site.geometry.coordinates[0]}
                     >
                         <button
                             className="marker-btn"
                             onClick={e => {
                                 e.preventDefault();
-                                setSelectedPark(park);
+                                setSelectedSite(site);
                             }}
                         >
-                            <img src="/skateboarding.svg" alt="Skate Park Icon" />
+                            <img src="/mapmarker.svg" alt="marker icon" />
                         </button>
                     </Marker>
                 ))}
 
-                {selectedPark ? (
+                {selectedSite ? (
                     <Popup className="infobox"
-                        latitude={selectedPark.geometry.coordinates[1]}
-                        longitude={selectedPark.geometry.coordinates[0]}
+                        latitude={selectedSite.geometry.coordinates[1]}
+                        longitude={selectedSite.geometry.coordinates[0]}
                         onClose={() => {
-                            setSelectedPark(null);
+                            setSelectedSite(null);
                         }}
                     >
                         <div>
-                            <h6>{selectedPark.fields.name_en}</h6>
-                            <p>{selectedPark.fields.short_description_en}</p>
+                            <h6>{selectedSite.fields.name_en}</h6>
+                            <p>{selectedSite.fields.short_description_en}</p>
                         </div>
                     </Popup>
                 ) : null}

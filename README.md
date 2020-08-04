@@ -19,14 +19,16 @@ UI Folder Structure - Iteration 1
 │	│	│   ├── Banner.jsx
 │	│	│   ├── Features.jsx
 │	│	│   ├── Hero.jsx
+│	│	│   ├── Map3.jsx
 │	│	│   ├── MapContainer.jsx
 │	│	│   ├── Navbar.jsx
 │	│	│   ├── SiteContainer.jsx
 │	│	│   ├── Title.jsx
 │	│	├── pages
 │	│	│   ├── Home.js
-│	│	│   ├── SingleSite.js
+│	│	│   ├── Search.js
 │	│	│   ├── Sites.js
+│	│	│   ├── Auth.js
 ```
 
 Iterations
@@ -41,11 +43,14 @@ Iteration 1
 
 - Reference: css stylesheet adapted from : https://github.com/john-smilga/setup-files-react-beach-resort
 
-Iteration 2 To Dos:
-- Add login and logout components and functionalities through Google authentication similar to the approach given in the MERN Stack book.
-- On page 1(home page), connect UNESCO geographic data with embedded Google Maps API, which displays the location pins of various world heritage sites, add search and filter options for user to narrow the map scope.
-- On page 2 (view select sites), provide comments and bookmark functions for user who logs into the website, and synchronize data with backend database.
-  
+Iteration 2
+![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page2-itr2.png)
+
+![page 3]()
+
+- In Mpa3.jsx component, include RectMapGL component for map rendering. Mapbox API is used to render a map view a various heritage sites.
+- Import heritage site dataset from UNESCO to the map components, available json data is mapped into mapbox throught Marker and Popup component from react-map-gl.
+
 ---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
