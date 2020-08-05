@@ -4,7 +4,7 @@ Team members: Yiwen Fang, Peng Hao, Dong Liu
 UI repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI
 
 API repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_API
-
+---
 UI Folder Structure - Iteration 1
 ```
 ├── UNESCO_UI
@@ -17,7 +17,9 @@ UI Folder Structure - Iteration 1
 │	│	├── index.js
 │	│	├── components
 │	│	│   ├── Banner.jsx
+│	│	│   ├── Card.jsx
 │	│	│   ├── Features.jsx
+│	│	│   ├── Form-hook.js
 │	│	│   ├── Hero.jsx
 │	│	│   ├── Map3.jsx
 │	│	│   ├── MapContainer.jsx
@@ -30,9 +32,9 @@ UI Folder Structure - Iteration 1
 │	│	│   ├── Sites.js
 │	│	│   ├── Auth.js
 ```
-
-Iterations
-Iteration 1
+---
+## Progress
+## Iteration 1
 ![page 1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page1.png)
 
 ![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page2.png)
@@ -43,15 +45,22 @@ Iteration 1
 
 - Reference: css stylesheet adapted from : https://github.com/john-smilga/setup-files-react-beach-resort
 
-Iteration 2
+---
+
+## Iteration 2
 ![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page2-itr2.png)
 
 ![page 3]()
 
 - In Mpa3.jsx component, include RectMapGL component for map rendering. Mapbox API is used to render a map view a various heritage sites.
-- Import heritage site dataset from UNESCO to the map components, available json data is mapped into mapbox throught Marker and Popup component from react-map-gl.
+- Import heritage site dataset from UNESCO to the map components, available json data is mapped into Mapbox through Marker and Popup component from react-map-gl.
 
 ---
+## Iteration 3 TO DO
+
+- Connect user authentication with backend.
+- Connect user comment and edit function with backend. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -8,17 +8,17 @@ export default class Features extends Component {
             {
                 icon: <FaMapMarkedAlt />,
                 title: "Visualize Site Locations",
-                info: "View world heritage site locations on Google Maps."
+                info: "View world heritage sites and descriptions on interactive maps."
             },
             {
                 icon: <FaSignInAlt />,
                 title: "Login and Logout",
-                info: "User can edit and bookmark site of interest."
+                info: "User can login and logout to access more functionalities."
             },
             {
                 icon: <FaDigitalTachograph />,
                 title: "Heritage Sits Statistics",
-                info: "Looking into detailed information on various heritage sites."
+                info: "User can edit comments and details for select heritage sites"
             }
         ]
     }
@@ -31,7 +31,7 @@ export default class Features extends Component {
                         return (
                             <article key={index} className="features">
                                 <span>{item.icon}</span>
-                                <h6>{item.title}</h6>
+                                <h5>{item.title}</h5>
                                 <p>{item.info}</p>
                             </article>
                         );
