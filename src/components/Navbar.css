@@ -1,0 +1,18 @@
+.nav-links button {
+    cursor: pointer;
+    border: 1px solid #292929;
+    color: #292929;
+    background: transparent;
+    padding: 0.5rem;
+    font: inherit;
+}
+
+.nav-links button:focus {
+    outline: none;
+}
+
+.nav-links button:hover,
+.nav-links button:active {
+    background: #292929;
+    color: white;
+}

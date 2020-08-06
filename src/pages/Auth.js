@@ -1,4 +1,4 @@
-import React, { useState }from 'react';
+import React, { useState, useContext }from 'react';
 import {useForm} from "../components/form-hook";
 import {VALIDATOR_EMAIL, VALIDATOR_MINLENGTH, VALIDATOR_REQUIRE} from "../util/validators";
 import Input from "../components/FormElements/Input";
@@ -6,8 +6,10 @@ import Button from "../components/FormElements/Button";
 import Card from "../components/Card";
 import './Auth.css'
 import GoogleBtn from "../components/GoogleBtn";
+import {AuthContext} from "../components/Context/auth-context";
 
 const Auth = () => {
+    const auth = useContext(AuthContext);
     const [isLogin, setLogin] = useState(true);
 
     const [formState, inputHandler, setFormData] = useForm({
@@ -24,6 +26,7 @@ const Auth = () => {
     const authSubmitHandler = event => {
         event.preventDefault();
         console.log(formState.inputs);
+        auth.login();
     };
 
     const switchModeHandler = () =>{

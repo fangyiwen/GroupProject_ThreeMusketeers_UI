@@ -50,11 +50,12 @@ UI Folder Structure - Iteration 1
 ## Iteration 2
 ![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page2-itr2.png)
 
-![page 3]()
+![page 3](src/images/screenshot-sigInPage.png)
 
 - In Mpa3.jsx component, include RectMapGL component for map rendering. Mapbox API is used to render a map view a various heritage sites.
 - Import heritage site dataset from UNESCO to the map components, available json data is mapped into Mapbox through Marker and Popup component from react-map-gl.
-
+- Add sing in and sign up page with input validation.
+- Add static google map for different sites to show sit location on google map.
 ---
 ## Iteration 3 TO DO
 
