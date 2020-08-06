@@ -12,32 +12,32 @@ UI Folder Structure - Iteration 1
 │	│	├── favicon.ico
 │	│	├── index.html
 │	├── src
-│	│	├── App.css
 │	│	├── App.js
 │	│	├── index.js
-│	│	├── components
-│	│	│   ├── Banner.jsx
-│	│	│   ├── Card.jsx
-│	│	│   ├── Features.jsx
-│	│	│   ├── Form-hook.js
-│	│	│   ├── Hero.jsx
-│	│	│   ├── Map3.jsx
-│	│	│   ├── MapContainer.jsx
-│	│	│   ├── Navbar.jsx
-│	│	│   ├── SiteContainer.jsx
-│	│	│   ├── Title.jsx
-│	│	├── pages
-│	│	│   ├── Home.js
-│	│	│   ├── Search.js
-│	│	│   ├── Sites.js
-│	│	│   ├── Auth.js
-```
+│	│	├── places
+│	│	│   ├── components
+│	│	│   ├── pages
+│	│	├── shared
+│	│	│   ├── components
+│	│	│   ├── context
+│	│	│   ├── hooks
+│	│	│   ├── util
+│	│	├── user
+│	│	│   ├── components
+│	│	│   ├── pages
 ---
 ## Progress
-## Iteration 1
-![page 1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page1.png)
 
-![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page2.png)
+## Iteration 2
+![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/uielements/images/screenshot-itr2-1.png)
+
+![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/uielements/images/screenshot-itr2-2.png)
+
+- Add Users page with userList and UserItem components to store user data, including name, e-mail, password and images. A readonly review if presented for users who are logged out. After log in, user will be able to update their collection of various sites.
+- Add UserPlaces page for authorized users to access their individual database, and perform CRUD operations on heritage sites of interest.
+---
+
+## Iteration 1
 
 - For iteration 1, a boilerplate was first created by npx react-create-app. Front-end components are added under src/components folder, which comprise of both functional and class components depending on the requirement for state change. A separate src/pages folder includes three internal pages for the project.
 - A Google Maps API is included in the home page, more specific functions and synchronization with backend database are yet to be implemented during next phase of the project.
@@ -47,18 +47,8 @@ UI Folder Structure - Iteration 1
 
 ---
 
-## Iteration 2
-![page 2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/images/screenshot-page2-itr2.png)
-
-![page 3](src/images/screenshot-sigInPage.png)
-
-- In Mpa3.jsx component, include RectMapGL component for map rendering. Mapbox API is used to render a map view a various heritage sites.
-- Import heritage site dataset from UNESCO to the map components, available json data is mapped into Mapbox through Marker and Popup component from react-map-gl.
-- Add sing in and sign up page with input validation.
-- Add static google map for different sites to show sit location on google map.
----
 ## Iteration 3 TO DO
-
+- add link to UNESCO map views
 - Connect user authentication with backend.
 - Connect user comment and edit function with backend. 
 
