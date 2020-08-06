@@ -1,54 +1,91 @@
-import React, { useState, useCallback }from 'react';
-import './App.css';
-import NavBar from "./components/Navbar"
-import Home from "./pages/Home"
-import Sites from "./pages/Sites"
-import Search from "./pages/Search"
-import { Route, Switch, Redirect  } from "react-router-dom"
-import Auth from "./pages/Auth";
-import {AuthContext} from "./components/Context/auth-context";
+import React, { useState, useCallback } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
-export default function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+import Home from './shared/components/UIElements/Home'
+import Search from './shared/components/UIElements/Search'
 
-    const login = useCallback(() => {
-        setIsLoggedIn(true);
-    }, []);
+import Users from './user/pages/Users';
+import NewPlace from './places/pages/NewPlace';
+import UserPlaces from './places/pages/UserPlaces';
+import UpdatePlace from './places/pages/UpdatePlace';
+import Auth from './user/pages/Auth';
+import MainNavigation from './shared/components/Navigation/MainNavigation';
+import { AuthContext } from './shared/context/auth-context';
 
-    const logout = useCallback(() => {
-        setIsLoggedIn(false);
-    }, []);
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    let routes;
-    if (isLoggedIn) {
-        routes = (
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/search" component={Search} />
-                <Route exact path="/sites" component={Sites} />
-                <Redirect to="/" />
-            </Switch>
-        );
-    } else {
-        routes = (
-            <Switch>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/search" component={Search} />
-                <Route exact path="/sites" component={Sites} />
-                <Route exact path="/auth" component={Auth} />
-                <Redirect to="/auth" />
-            </Switch>
-        );
-    }
+  const login = useCallback(() => {
+    setIsLoggedIn(true);
+  }, []);
+
+  const logout = useCallback(() => {
+    setIsLoggedIn(false);
+  }, []);
+
+  let routes;
+
+  if (isLoggedIn) {
+    routes = (
+      <Switch>
+
+        <Route path="/home" exact>
+          <Home />
+        </Route>
+        <Route path="/search" exact>
+          <Search />
+        </Route>
+
+        <Route path="/" exact>
+          <Users />
+        </Route>
+        <Route path="/:userId/places" exact>
+          <UserPlaces />
+        </Route>
+        <Route path="/places/new" exact>
+          <NewPlace />
+        </Route>
+        <Route path="/places/:placeId">
+          <UpdatePlace />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    );
+  } else {
+    routes = (
+      <Switch>
+      
+        <Route path="/home" exact>
+          <Home />
+        </Route>
+        <Route path="/search" exact>
+          <Search />
+        </Route>
+
+        <Route path="/" exact>
+          <Users />
+        </Route>
+        <Route path="/:userId/places" exact>
+          <UserPlaces />
+        </Route>
+        <Route path="/auth">
+          <Auth />
+        </Route>
+        <Redirect to="/auth" />
+      </Switch>
+    );
+  }
 
   return (
-      <AuthContext.Provider
-          value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
-      >
-    <div>
-      <NavBar />
-        {routes}
+    <AuthContext.Provider
+      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+    >
+      <Router>
+        <MainNavigation />
+        <main>{routes}</main>
+      </Router>
+    </AuthContext.Provider>
+  );
+};
 
-    </div>
-      </AuthContext.Provider>     );
-}
+export default App;
