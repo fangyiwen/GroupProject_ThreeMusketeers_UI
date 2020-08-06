@@ -60,6 +60,17 @@ const Auth = () => {
             {!isLogin && (
                 <Input
                     element="input"
+                    id="user name"
+                    type="text"
+                    label="Your user Name"
+                    validators={[VALIDATOR_REQUIRE()]}
+                    errorText="Please enter a name."
+                    onInput={inputHandler}
+                />
+            )}
+            {!isLogin && (
+                <Input
+                    element="input"
                     id="name"
                     type="text"
                     label="Your Name"

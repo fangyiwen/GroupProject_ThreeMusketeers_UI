@@ -4,10 +4,9 @@ import NavBar from "./components/Navbar"
 import Home from "./pages/Home"
 import Sites from "./pages/Sites"
 import Search from "./pages/Search"
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect  } from "react-router-dom"
 import Auth from "./pages/Auth";
 import {AuthContext} from "./components/Context/auth-context";
-import Redirect from "react-router-dom/es/Redirect";
 
 export default function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
