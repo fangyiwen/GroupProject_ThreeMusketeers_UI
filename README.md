@@ -4,6 +4,7 @@ Team members: Yiwen Fang, Peng Hao, Dong Liu
 UI repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI
 
 API repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_API
+
 ---
 UI Folder Structure - Iteration 1
 ```
@@ -34,9 +35,11 @@ UI Folder Structure - Iteration 1
 ![pic3](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr2-3.png)
 ![pic4](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr2-4.png)
 ![pic5](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr2-5.png)
-![pic5](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr2-6.png)
-- Add Users page with userList and UserItem components to store user data, including name, e-mail, password and images. A readonly review if presented for users who are logged out. After log in, user will be able to update their collection of various sites.
+
+- Add Users page with userList and UserItem components to store user data, including name, e-mail, password and images. A read-only review is presented for users who are logged out. After log in, user will be able to update their collection of various sites.
+- Google Maps API is introduced in single site view. Custom form input component is added for authenticated users to edit site information.
 - Add UserPlaces page for authorized users to access their individual database, and perform CRUD operations on heritage sites of interest.
+- Add Place and Update Place pages are added for user to add selected heritage site.
 ---
 
 ## Iteration 1
