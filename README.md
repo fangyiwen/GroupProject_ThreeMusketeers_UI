@@ -26,6 +26,7 @@ UI Folder Structure - Iteration 1
 │	│	├── user
 │	│	│   ├── components
 │	│	│   ├── pages
+```
 ---
 ## Progress
 
