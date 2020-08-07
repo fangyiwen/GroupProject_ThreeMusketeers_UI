@@ -31,6 +31,11 @@ UI Folder Structure - Iteration 1
 ## Progress
 
 ## Iteration 2
+
+Heroku Deployment Link (full functionality and connection to backend to be added in iteration 3):
+
+https://arcane-chamber-77890.herokuapp.com/home
+
 ![pic1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr2-1.png)
 
 ![pic2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr2-2.png)
