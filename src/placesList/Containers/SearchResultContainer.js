@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import API from '../../API'
 import SitesContainer from './SitesContainer'
 import LoadingContainer from './LoadingContainer'
-import SearchBar from './SearchBar'
+
 
 class SearchResultsContainer extends React.PureComponent {
     state = {
@@ -76,7 +76,6 @@ class SearchResultsContainer extends React.PureComponent {
                             <div className='primary-header-container'>
                                 {`Displaying results for '${searchCriteria}'`}
                             </div>
-                            <SearchBar {...this.routerProps} />
                         </div>
 
                         <SitesContainer

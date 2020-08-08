@@ -11,6 +11,7 @@ import UpdatePlace from './places/pages/UpdatePlace';
 import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
+import List from "./placesList/List";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -35,6 +36,10 @@ const App = () => {
         <Route path="/search" exact>
           <Search />
         </Route>
+
+          <Route path="/list" exact>
+              <List />
+          </Route>
 
         <Route path="/" exact>
           <Users />
@@ -61,8 +66,11 @@ const App = () => {
         <Route path="/search" exact>
           <Search />
         </Route>
+          <Route path="/list" exact>
+              <List />
+          </Route>
 
-        <Route path="/" exact>
+          <Route path="/" exact>
           <Users />
         </Route>
         <Route path="/:userId/places" exact>
