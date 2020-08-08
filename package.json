@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "node": "12.11.1"
-    },
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -46,5 +46,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@emotion/core": "^10.0.28",
+    "google-map-react": "^2.0.8",
+    "react-spinners": "^0.9.0",
+    "semantic-ui-react": "^1.1.1"
   }
 }

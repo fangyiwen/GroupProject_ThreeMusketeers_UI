@@ -20,6 +20,11 @@ const NavLinks = props => {
           VIEW MAPS
         </NavLink>
       </li>
+        <li>
+            <NavLink to="/list" exact>
+                 VIEW SITES
+            </NavLink>
+        </li>
       
       <li>
         <NavLink to="/" exact>
