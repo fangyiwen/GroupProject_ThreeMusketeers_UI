@@ -11,6 +11,7 @@ import {
 import { useForm } from '../../shared/hooks/form-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 import './Auth.css';
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 
 const Auth = () => {
   const auth = useContext(AuthContext);
@@ -76,6 +77,9 @@ const Auth = () => {
             onInput={inputHandler}
           />
         )}
+        {!isLoginMode && (
+            <ImageUpload center id="image" onInput={inputHandler} />)
+        }
         <Input
           element="input"
           id="email"
