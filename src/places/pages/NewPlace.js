@@ -8,6 +8,7 @@ import {
 } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
 import './PlaceForm.css';
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 
 const NewPlace = () => {
   const [formState, inputHandler] = useForm(
@@ -23,11 +24,16 @@ const NewPlace = () => {
       address: {
         value: '',
         isValid: false
+      },
+      image: {
+        value: null,
+        isValid: false
       }
     },
     false
   );
 
+  //todo: connect to backend
   const placeSubmitHandler = event => {
     event.preventDefault();
     console.log(formState.inputs); // send this to the backend!
@@ -59,6 +65,11 @@ const NewPlace = () => {
         validators={[VALIDATOR_REQUIRE()]}
         errorText="Please enter a valid address."
         onInput={inputHandler}
+      />
+      <ImageUpload
+        id="image"
+        onInput={inputHandler}
+        errorText="Please provide an image."
       />
       <Button type="submit" disabled={!formState.isValid}>
         ADD PLACE

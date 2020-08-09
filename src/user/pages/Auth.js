@@ -40,7 +40,8 @@ const Auth = () => {
       setFormData(
         {
           ...formState.inputs,
-          name: undefined, avatar: undefined
+          name: undefined,
+          image: undefined
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -52,7 +53,7 @@ const Auth = () => {
             value: '',
             isValid: false
           },
-          avatar: {
+          image: {
             value: null,
             isValid: false
           }
@@ -64,40 +65,12 @@ const Auth = () => {
   };
 
 
-const authSubmitHandler = async event => {
+
+  //todo: connect to backend
+  const authSubmitHandler = event => {
     event.preventDefault();
-
-    if (isLoginMode) {
-      try {
-        const responseData = await sendRequest(
-          'http://localhost:5000/api/users/login',
-          'POST',
-          JSON.stringify({
-            email: formState.inputs.email.value,
-            password: formState.inputs.password.value
-          }),
-          {
-            'Content-Type': 'application/json'
-          }
-        );
-        auth.login(responseData.user.id);
-      } catch (err) {}
-    } else {
-      try {
-        const formData = new FormData();
-        formData.append('email', formState.inputs.email.value);
-        formData.append('name', formState.inputs.name.value);
-        formData.append('password', formState.inputs.password.value);
-        formData.append('avatar', formState.inputs.avatar.value);
-        const responseData = await sendRequest(
-          'http://localhost:5000/api/users/signup',
-          'POST',
-          formData
-        );
-
-        auth.login(responseData.user.id);
-      } catch (err) {}
-    }
+    console.log(formState.inputs);
+    auth.login();
   };
 
   return (
@@ -120,7 +93,7 @@ const authSubmitHandler = async event => {
           />
         )}
         {!isLoginMode && (
-            <ImageUpload center id="avatar" onInput={inputHandler} />)
+            <ImageUpload center id="image" onInput={inputHandler} />)
         }
         <Input
           element="input"
