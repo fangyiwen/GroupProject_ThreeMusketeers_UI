@@ -14,6 +14,7 @@ import './Auth.css';
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import {useHttpClient} from "../../shared/hooks/http-hooks";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 
 const Auth = () => {
   const auth = useContext(AuthContext);
@@ -39,7 +40,7 @@ const Auth = () => {
       setFormData(
         {
           ...formState.inputs,
-          name: undefined, image: undefined
+          name: undefined, avatar: undefined
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -51,7 +52,7 @@ const Auth = () => {
             value: '',
             isValid: false
           },
-          image: {
+          avatar: {
             value: null,
             isValid: false
           }
@@ -87,7 +88,7 @@ const authSubmitHandler = async event => {
         formData.append('email', formState.inputs.email.value);
         formData.append('name', formState.inputs.name.value);
         formData.append('password', formState.inputs.password.value);
-        formData.append('image', formState.inputs.image.value);
+        formData.append('avatar', formState.inputs.avatar.value);
         const responseData = await sendRequest(
           'http://localhost:5000/api/users/signup',
           'POST',
@@ -100,6 +101,8 @@ const authSubmitHandler = async event => {
   };
 
   return (
+    <React.Fragment>
+    <ErrorModal error={error} onClear={clearError} />
     <Card className="authentication">
       {isLoading && <LoadingSpinner asOverlay />}
       <h2>Login Required</h2>
@@ -117,7 +120,7 @@ const authSubmitHandler = async event => {
           />
         )}
         {!isLoginMode && (
-            <ImageUpload center id="image" onInput={inputHandler} />)
+            <ImageUpload center id="avatar" onInput={inputHandler} />)
         }
         <Input
           element="input"
@@ -145,6 +148,7 @@ const authSubmitHandler = async event => {
         SWITCH TO {isLoginMode ? 'SIGNUP' : 'LOGIN'}
       </Button>
     </Card>
+  </React.Fragment>
   );
 };
 
