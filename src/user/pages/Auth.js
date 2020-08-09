@@ -41,7 +41,7 @@ const Auth = () => {
         {
           ...formState.inputs,
           name: undefined,
-          image: undefined
+          avatar: undefined
         },
         formState.inputs.email.isValid && formState.inputs.password.isValid
       );
@@ -53,7 +53,7 @@ const Auth = () => {
             value: '',
             isValid: false
           },
-          image: {
+          avatar: {
             value: null,
             isValid: false
           }
@@ -64,12 +64,45 @@ const Auth = () => {
     setIsLoginMode(prevMode => !prevMode);
   };
 
-
-
-  //todo: connect to backend
-  const authSubmitHandler = event => {
+  const authSubmitHandler = async event => {
     event.preventDefault();
-    console.log(formState.inputs);
+    //console.log(formState.inputs);
+
+    if (isLoginMode) {
+      console.log("logged in");
+      try {
+        const responseData = await sendRequest(
+            'http://localhost:5000/api/users/login',
+            'POST',
+            JSON.stringify({
+              email: formState.inputs.email.value,
+              password: formState.inputs.password.value
+            }),
+            {
+              'Content-Type': 'application/json'
+            }
+        );
+        auth.login(responseData.user.id);
+      } catch (err) {}
+    } else {
+      try {
+        const formData = new FormData();
+        formData.append('email', formState.inputs.email.value);
+        formData.append('username', formState.inputs.name.value);
+        formData.append('password', formState.inputs.password.value);
+        formData.append('avatar', formState.inputs.avatar.value);
+        console.log(formData);
+        const responseData = await sendRequest(
+            'http://localhost:5000/api/users/signup',
+            'POST',
+            formData
+        );
+        console.log("sign up");
+        console.log(responseData);
+        auth.login(responseData.user.id);
+      } catch (err) {console.log("there is an error oops");}
+    }
+
     auth.login();
   };
 
@@ -93,7 +126,7 @@ const Auth = () => {
           />
         )}
         {!isLoginMode && (
-            <ImageUpload center id="image" onInput={inputHandler} />)
+            <ImageUpload center id="avatar" onInput={inputHandler} />)
         }
         <Input
           element="input"
