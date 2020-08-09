@@ -1,4 +1,4 @@
-UI Repo for Project: Explore World Heritage Sites
+ovUI Repo for Project: Explore World Heritage Sites
 Team members: Yiwen Fang, Peng Hao, Dong Liu
 
 UI repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI

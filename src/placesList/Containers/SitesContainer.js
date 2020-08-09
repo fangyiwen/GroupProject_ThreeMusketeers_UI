@@ -1,6 +1,6 @@
-import React from 'react'
-import SiteCard from './SiteCard'
-import NoResults from './NoResultsContainer'
+import React from "react";
+import SiteCard from "./SiteCard";
+import NoResults from "./NoResultsContainer";
 
 const SitesContainer = ({
                             sites,
@@ -11,20 +11,20 @@ const SitesContainer = ({
                             removeBucketlistSiteFromState,
                             removeVisitedSiteFromState,
                             signin,
-                            signup
+                            signup,
                         }) => {
     return (
         <div>
             {sites.length > 0 ? (
-                <div className='sites-container'>
-                    {sites.map(site => (
+                <div className="sites-container">
+                    {sites.map((site, index) => (
                         <SiteCard
-                            key={site.id}
+                            key={index}
                             site={site}
                             signup={signup}
                             signin={signin}
-                            bucketlist={bucketlist.map(site => site.id).includes(site.id)}
-                            visited={visited.map(site => site.id).includes(site.id)}
+                            bucketlist={bucketlist.map((site) => site.id).includes(site.id)}
+                            visited={visited.map((site) => site.id).includes(site.id)}
                             addBucketlistSiteToState={addBucketlistSiteToState}
                             addVisitedSiteToState={addVisitedSiteToState}
                             removeBucketlistSiteFromState={removeBucketlistSiteFromState}
@@ -33,13 +33,10 @@ const SitesContainer = ({
                     ))}
                 </div>
             ) : (
-                <NoResults/>
+                <NoResults />
             )}
-
         </div>
+    );
+};
 
-
-    )
-}
-
-export default SitesContainer
+export default SitesContainer;
