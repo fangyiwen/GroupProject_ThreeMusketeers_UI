@@ -15,13 +15,16 @@ import List from "./placesList/List";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(false);
 
-  const login = useCallback(() => {
+  const login = useCallback(uid => {
     setIsLoggedIn(true);
+    setUserId(uid);
   }, []);
 
   const logout = useCallback(() => {
     setIsLoggedIn(false);
+    setUserId(null);
   }, []);
 
   let routes;
@@ -29,18 +32,15 @@ const App = () => {
   if (isLoggedIn) {
     routes = (
       <Switch>
-
         <Route path="/home" exact>
           <Home />
         </Route>
         <Route path="/search" exact>
           <Search />
         </Route>
-
           <Route path="/list" exact>
               <List />
           </Route>
-
         <Route path="/" exact>
           <Users />
         </Route>
@@ -59,7 +59,6 @@ const App = () => {
   } else {
     routes = (
       <Switch>
-      
         <Route path="/home" exact>
           <Home />
         </Route>
@@ -69,7 +68,6 @@ const App = () => {
           <Route path="/list" exact>
               <List />
           </Route>
-
           <Route path="/" exact>
           <Users />
         </Route>
@@ -86,7 +84,7 @@ const App = () => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
+      value={{ isLoggedIn: isLoggedIn, userId: userId, login: login, logout: logout }}
     >
       <Router>
         <MainNavigation />
