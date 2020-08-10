@@ -1,8 +1,7 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import { Icon } from 'semantic-ui-react'
+import Marker from "./Marker";
 
-const Marker = () => <Icon name='map marker' size='big' color='red' />
 
 class MapContainer extends React.Component {
     static defaultProps = {
@@ -26,7 +25,12 @@ class MapContainer extends React.Component {
                     center={center}
                     defaultZoom={this.props.zoom}
                 >
-                    <Marker lat={lat} lng={lng} />
+                    <Marker
+                        lat={lat}
+                        lng={lng}
+                        name="My Marker"
+                        color="red"
+                    />
                 </GoogleMapReact>
             </div>
         )

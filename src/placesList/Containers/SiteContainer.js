@@ -181,11 +181,13 @@ class SiteContainer extends React.Component {
   };
 
   renderMapContainer = () => {
+    console.log("rendering map")
     if (this.state.site.longitude) {
       const latitudeAsFloat = parseFloat(this.state.site.latitude);
       const longitudeAsFloat = parseFloat(this.state.site.longitude);
       const center = { lat: latitudeAsFloat, lng: longitudeAsFloat };
 
+      console.log(latitudeAsFloat, longitudeAsFloat)
       return (
         <MapContainer
           center={center}
@@ -242,6 +244,7 @@ class SiteContainer extends React.Component {
                   className="site-description-text-container"
                   dangerouslySetInnerHTML={{ __html: site.short_description }}
                 ></div>
+                {console.log("rendering map")}
                 {this.renderMapContainer()}
               </div>
             </div>
