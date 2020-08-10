@@ -1,40 +1,38 @@
-import React from 'react';
-
+import React , { useEffect, useState } from 'react';
 import UsersList from '../components/UsersList';
+import {useHttpClient} from "../../shared/hooks/http-hooks";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 
 const Users = () => {
-  const USERS = [
-    {
-      id: 'u1',
-      name: 'Landon Liu',
-      image:
-        'https://cdn.pixabay.com/photo/2016/07/10/21/53/super-mario-1508624_1280.jpg',
-      places: 1
-    },
-    {
-      id: 'u2',
-      name: 'Jerry Chen',
-      image:
-        'https://cdn.pixabay.com/photo/2016/07/10/21/53/super-mario-1508624_1280.jpg',
-      places: 1
-    },
-    {
-      id: 'u1',
-      name: 'Larry Page',
-      image:
-        'https://cdn.pixabay.com/photo/2016/07/10/21/53/super-mario-1508624_1280.jpg',
-      places: 0
-    },
-    {
-      id: 'u1',
-      name: 'Sergey Brin',
-      image:
-        'https://cdn.pixabay.com/photo/2016/07/10/21/53/super-mario-1508624_1280.jpg',
-      places: 0
-    }
-  ];
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [loadedUsers, setLoadedUsers] = useState();
 
-  return <UsersList items={USERS} />;
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const responseData = await sendRequest(
+            'http://localhost:5000/api/users'
+        );
+
+        setLoadedUsers(responseData.users);
+      } catch (err) {}
+    };
+    fetchUsers();
+  }, [sendRequest]);
+
+  return (
+      <React.Fragment>
+        <ErrorModal error={error} onClear={clearError} />
+        {isLoading && (
+            <div className="center">
+              <LoadingSpinner />
+            </div>
+        )}
+        {console.log(loadedUsers)};
+        {!isLoading && loadedUsers && <UsersList items={loadedUsers} />}
+      </React.Fragment>
+  );
 };
 
 export default Users;
