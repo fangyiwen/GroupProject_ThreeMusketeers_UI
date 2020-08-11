@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
@@ -9,8 +9,15 @@ import {
 import { useForm } from '../../shared/hooks/form-hook';
 import './PlaceForm.css';
 import ImageUpload from "../../shared/components/FormElements/ImageUpload";
+import {useHttpClient} from "../../shared/hooks/http-hooks";
+import {AuthContext} from "../../shared/context/auth-context";
+import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import { useHistory } from 'react-router-dom';
 
 const NewPlace = () => {
+    const auth = useContext(AuthContext);
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
       title: {
@@ -33,14 +40,27 @@ const NewPlace = () => {
     false
   );
 
-  //todo: connect to backend
-  const placeSubmitHandler = event => {
+  const history = useHistory();
+
+  const placeSubmitHandler = async event => {
     event.preventDefault();
-    console.log(formState.inputs); // send this to the backend!
+    try {
+      const formData = new FormData();
+      formData.append('title', formState.inputs.title.value);
+      formData.append('description', formState.inputs.description.value);
+      formData.append('address', formState.inputs.address.value);
+      formData.append('creator', auth.userId);
+      formData.append('image', formState.inputs.image.value);
+      await sendRequest('http://localhost:5000/api/customPlaces', 'POST', formData);
+      history.push('/');
+    } catch (err) {}
   };
 
   return (
+    <React.Fragment>
+    <ErrorModal error={error} onClear={clearError} />
     <form className="place-form" onSubmit={placeSubmitHandler}>
+        {isLoading && <LoadingSpinner asOverlay />}
       <Input
         id="title"
         element="input"
@@ -75,6 +95,7 @@ const NewPlace = () => {
         ADD PLACE
       </Button>
     </form>
+      </React.Fragment>
   );
 };
 
