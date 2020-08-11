@@ -5,6 +5,8 @@ import { Link, withRouter } from "react-router-dom";
 import LoadingContainer from "./LoadingContainer";
 import { sites } from "./../../shared/components/data/whl.json";
 
+import Api from "./../../Api";
+
 class HomeContainer extends React.Component {
   state = {
     loading: true,
@@ -24,6 +26,7 @@ class HomeContainer extends React.Component {
       });
     window.scrollTo(0, 0);
   }
+
   //   初始化拿到数据
   init() {
     this.getdatalist("Africa", "africa");
@@ -36,8 +39,11 @@ class HomeContainer extends React.Component {
     );
   }
 
-  getdatalist(query, dataListName) {
-    var newList = sites.filter((item) => item.region === query);
+  async getdatalist(query, dataListName) {
+    var data = await Api.getListData();
+    var newList = data.places.filter(
+      (item) => item.world_heritage_list.region === query
+    );
     this.setState({
       [dataListName]: newList,
     });

@@ -138,8 +138,8 @@ class SiteCard extends React.Component {
         <div className="site-card-image-container">
           <img
             className="site-card-image"
-            src={site.image_url}
-            alt={site.states}
+            src={site.world_heritage_list.image_url}
+            alt={site.world_heritage_list.states}
           />
           <div className="site-card-buttons-hover-container ">
             {this.buttons()}
@@ -159,17 +159,17 @@ class SiteCard extends React.Component {
                     .map((state) => state["name"].toUpperCase())
                     .join(" | ")}`} */}
             </div>
-            <Link to={`/list/sites/${site.id_number}`}>
+            <Link to={`/list/sites/${site.pid}`}>
               <div className="site-card-name-container">
-                {site.site.length > 38
-                  ? `${site.site.substr(0, 32)}...`
-                  : site.site}
+                {site.world_heritage_list.site.length > 38
+                  ? `${site.world_heritage_list.site.substr(0, 32)}...`
+                  : site.world_heritage_list.site}
               </div>
             </Link>
             <p>
-              {site.states.length > 38
-                ? `${site.states.substr(0, 32)}...`
-                : site.states}
+              {site.world_heritage_list.states.length > 38
+                ? `${site.world_heritage_list.states.substr(0, 32)}...`
+                : site.world_heritage_list.states}
             </p>
 
             {/* <div className="site-card-star-container">

@@ -10,7 +10,9 @@ import { withRouter } from "react-router-dom";
 
 class SiteContainer extends React.Component {
   state = {
-    site: {},
+    site: {
+      world_heritage_list: {},
+    },
     bucketlist: [],
     visited: [],
     loading: true,
@@ -21,15 +23,15 @@ class SiteContainer extends React.Component {
   }
 
   //   没有后台接口用这个区拿数据
-  getdataList() {
-    var newList = sites.filter(
-      (item) => item.id_number == this.props.match.params.id
-    );
+  async getdataList() {
+    var id = this.props.match.params.id;
+    var newList = await API.getListDataById(id);
+
     this.setState({
-      site: newList[0],
+      site: newList.place,
       loading: false,
 
-      //
+      //   这两个不知道干啥的
       //   bucketlist: this.props.bucketlist
       //     .map((site) => site.id)
       //     .includes(data.id),
@@ -181,13 +183,17 @@ class SiteContainer extends React.Component {
   };
 
   renderMapContainer = () => {
-    console.log("rendering map")
-    if (this.state.site.longitude) {
-      const latitudeAsFloat = parseFloat(this.state.site.latitude);
-      const longitudeAsFloat = parseFloat(this.state.site.longitude);
+    if (this.state.site.world_heritage_list.longitude) {
+      const latitudeAsFloat = parseFloat(
+        this.state.site.world_heritage_list.latitude,
+        10
+      );
+      const longitudeAsFloat = parseFloat(
+        this.state.site.world_heritage_list.longitude,
+        10
+      );
       const center = { lat: latitudeAsFloat, lng: longitudeAsFloat };
 
-      console.log(latitudeAsFloat, longitudeAsFloat)
       return (
         <MapContainer
           center={center}
@@ -202,10 +208,14 @@ class SiteContainer extends React.Component {
   render() {
     const { site } = this.state;
     console.log("site -> :", site);
-    let states = site.states ? site.states.split(",") : [];
+    let states = site.world_heritage_list.states
+      ? site.world_heritage_list.states.split(",")
+      : [];
     let statesStr = states.map((code) => code.toUpperCase()).join(",");
 
-    let iso_codes = site.iso_code ? site.iso_code.split(",") : [];
+    let iso_codes = site.world_heritage_list.iso_code
+      ? site.world_heritage_list.iso_code.split(",")
+      : [];
     let iso_codesStr = iso_codes.map((code) => code.toUpperCase()).join(",");
 
     return (
@@ -213,12 +223,14 @@ class SiteContainer extends React.Component {
         <React.Fragment>
           <div className="site-headings-container">
             <div className="site-headings-container-flex-1">
-              <div className="site-name-heading-container">{site.site}</div>
+              <div className="site-name-heading-container">
+                {site.world_heritage_list.site}
+              </div>
 
               <div className="site-sub-headings-container">
                 <div className="site-sub-heading-container">{statesStr}</div>
                 <div className="site-sub-heading-container">
-                  {`|  ${site.region}`}
+                  {`|  ${site.world_heritage_list.region}`}
                 </div>
               </div>
             </div>
@@ -229,8 +241,8 @@ class SiteContainer extends React.Component {
               <div className="site-image-container">
                 <img
                   className="site-image"
-                  src={site.image_url}
-                  alt={site.site}
+                  src={site.world_heritage_list.image_url}
+                  alt={site.world_heritage_list.site}
                 />
               </div>
 
@@ -242,9 +254,10 @@ class SiteContainer extends React.Component {
                 </div>
                 <div
                   className="site-description-text-container"
-                  dangerouslySetInnerHTML={{ __html: site.short_description }}
+                  dangerouslySetInnerHTML={{
+                    __html: site.world_heritage_list.short_description,
+                  }}
                 ></div>
-                {console.log("rendering map")}
                 {this.renderMapContainer()}
               </div>
             </div>
@@ -254,14 +267,18 @@ class SiteContainer extends React.Component {
                 <div className="site-detail-description">
                   <Icon name="calendar alternate outline" /> DATE INSCRIBED
                 </div>
-                <div className="site-detail">{site.date_inscribed}</div>
+                <div className="site-detail">
+                  {site.world_heritage_list.date_inscribed}
+                </div>
               </div>
 
               <div className="site-sub-details-container">
                 <div className="site-detail-description">
                   <Icon name="sitemap" /> CATEGORY
                 </div>
-                <div className="site-detail">{site.category}</div>
+                <div className="site-detail">
+                  {site.world_heritage_list.category}
+                </div>
               </div>
 
               <div className="site-sub-details-container">
@@ -276,14 +293,18 @@ class SiteContainer extends React.Component {
                 <div className="site-detail-description">
                   <Icon name="world" /> REGION
                 </div>
-                <div className="site-detail">{site.region}</div>
+                <div className="site-detail">
+                  {site.world_heritage_list.region}
+                </div>
               </div>
 
               <div className="site-sub-details-container">
                 <div className="site-detail-description">
                   <Icon name="arrows alternate vertical" /> LONGITUDE
                 </div>
-                <div className="site-detail">{site.longitude}</div>
+                <div className="site-detail">
+                  {site.world_heritage_list.longitude}
+                </div>
               </div>
 
               <div className="site-sub-details-container">
@@ -291,7 +312,9 @@ class SiteContainer extends React.Component {
                   <Icon name="arrows alternate horizontal" />
                   LATITUDE
                 </div>
-                <div className="site-detail">{site.latitude}</div>
+                <div className="site-detail">
+                  {site.world_heritage_list.latitude}
+                </div>
               </div>
 
               <div className="site-sub-details-container">
@@ -312,7 +335,11 @@ class SiteContainer extends React.Component {
               <div className="underline"></div>
 
               <div className="unesco-link-container">
-                <a className="unesco-link" href={site.http_url} target="blank">
+                <a
+                  className="unesco-link"
+                  href={site.world_heritage_list.http_url}
+                  target="blank"
+                >
                   <Icon name="external alternate" />
                   Learn more
                 </a>
