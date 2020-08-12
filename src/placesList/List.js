@@ -5,7 +5,6 @@ import "./List.css";
 
 import API from "./../Api";
 import SiteContainer from "./Containers/SiteContainer";
-import sampleSites from "./data/sampleSites";
 import HomeContainer from "./Containers/HomeContainer";
 import SearchResultsContainer from "./Containers/SearchResultContainer";
 import SavedContainer from "./Containers/SavedContainer";
@@ -54,14 +53,6 @@ class List extends React.Component {
       bucketlist,
       visited,
     });
-  };
-
-  getSampleSites = () => {
-    const sample_site_data = {};
-    // for (const key in sampleSites) {
-    //   sample_site_data[key] = await this.getTheseSites(sampleSites[key]);
-    // }
-    // this.setState(sample_site_data);
   };
 
   getTheseSites = (siteIds) => Promise.all(siteIds.map(API.getSite));
@@ -165,7 +156,7 @@ class List extends React.Component {
                 />
               )}
             />
-            {/* 直接传region  不需要xx=xx这样子 */}
+            {/* region */}
             <Route
               path="/list/search/:region"
               exact
@@ -203,7 +194,7 @@ class List extends React.Component {
                 />
               )}
             />
-            {/* 查询详情,点击了之后带着条数据的id进去 查出来即可 */}
+            {/* looking up the detail */}
             <Route
               path="/list/sites/:id"
               exact

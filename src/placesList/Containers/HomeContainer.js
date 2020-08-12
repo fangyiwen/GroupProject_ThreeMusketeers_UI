@@ -2,8 +2,7 @@ import React from "react";
 import SitesContainer from "./SitesContainer";
 import { Icon } from "semantic-ui-react";
 import { Link, withRouter } from "react-router-dom";
-import LoadingContainer from "./LoadingContainer";
-import { sites } from "./../../shared/components/data/whl.json";
+
 
 import Api from "./../../Api";
 
@@ -27,7 +26,7 @@ class HomeContainer extends React.Component {
     window.scrollTo(0, 0);
   }
 
-  //   初始化拿到数据
+  //   init the data
   init() {
     this.getdatalist("Africa", "africa");
     this.getdatalist("Arab States", "arabStates");

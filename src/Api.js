@@ -14,6 +14,7 @@ const USER_VISITEDS_URL = `${BASE_URL}/user_visiteds`;
 const SEARCH_URL = `${BASE_URL}/sites/search`;
 const SEARCH_BY_TAG_URL = `${BASE_URL}/sites/search_by_tag`;
 
+//some API urls are eliminated to after combining other teammates' work
 // SITE MANAGEMENT
 
 const getSites = () => {
@@ -159,7 +160,7 @@ export default {
     removeFromVisited,
     searchByTag,
     getTags,
-    //   列表数据
+    //   get the list data
     getListData,
     getListDataById,
 };

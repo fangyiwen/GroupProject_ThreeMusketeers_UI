@@ -37,12 +37,11 @@ class SearchResultsContainer extends React.PureComponent {
   };
 
   componentDidMount() {
-    //   趣本地数据  后面替换掉这个函数即可
     this.getdataList();
   }
 
   async getdataList() {
-    //   因为传进来的有+号   所以需要去掉,这个和后台商量着来
+    //   eliminate +
     var { region } = this.props.match.params;
     var newRegion = region.replace(/\+/g, " ");
     let url = this.props.match.url;
@@ -50,7 +49,6 @@ class SearchResultsContainer extends React.PureComponent {
     var newList = data.places.filter(
       (item) => item.world_heritage_list.region === newRegion
     );
-    // 延时改变数据  模拟请求
     this.setState({
       sites: newList,
       searchCriteria: url.split("/").pop().replace(/\+/g, " "),
