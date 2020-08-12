@@ -1,11 +1,7 @@
 import React from "react";
 import API from "./../../Api";
 import { Icon } from "semantic-ui-react";
-import TagsContainer from "./TagsContainer";
 import MapContainer from "./MapContainer";
-import LoadingContainer from "./LoadingContainer";
-import Auth from "../../user/pages/Auth";
-import { sites } from "./../../shared/components/data/whl.json";
 import { withRouter } from "react-router-dom";
 
 class SiteContainer extends React.Component {
