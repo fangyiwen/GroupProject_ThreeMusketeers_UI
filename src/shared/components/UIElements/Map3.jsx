@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
-import * as siteData from "../data/world-heritage-unesco-list_reduced.json";
+import { Link } from 'react-router-dom';
 
-import "./Map3.css" 
+// import * as siteData from "../data/world-heritage-unesco-list_reduced.json";
+import {whc} from "../data/world-heritage-unesco-list_production";
+
+import "./Map3.css"
 
 export default function App() {
     const [viewport, setViewport] = useState({
@@ -39,11 +42,11 @@ export default function App() {
                     setViewport(viewport);
                 }}
             >
-                {siteData.features.map(site => (
+                {whc.map(site => (
                     <Marker
-                        key={site.recordid}
-                        latitude={site.geometry.coordinates[1]}
-                        longitude={site.geometry.coordinates[0]}
+                        key={site.id_number}
+                        latitude={parseInt(site.latitude)}
+                        longitude={parseInt(site.longitude)}
                     >
                         <button
                             className="marker-btn"
@@ -59,15 +62,15 @@ export default function App() {
 
                 {selectedSite ? (
                     <Popup className="infobox"
-                        latitude={selectedSite.geometry.coordinates[1]}
-                        longitude={selectedSite.geometry.coordinates[0]}
+                           latitude={parseInt(selectedSite.latitude)}
+                           longitude={parseInt(selectedSite.longitude)}
                         onClose={() => {
                             setSelectedSite(null);
                         }}
                     >
                         <div>
-                            <h5>{selectedSite.fields.name_en}</h5>
-                            <p>{selectedSite.fields.short_description_en}</p>
+                            <h5>{selectedSite.site}</h5>
+                            <div>{selectedSite.short_description}</div>
                         </div>
                     </Popup>
                 ) : null}
