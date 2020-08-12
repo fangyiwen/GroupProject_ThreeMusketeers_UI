@@ -1,186 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import API from "./../../Api";
-import { Icon } from "semantic-ui-react";
-import Auth from "../../user/pages/Auth";
-
 class SiteCard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      saves: this.props.site.saves || 0,
-    };
-  }
-
-  handleAddToBucketlist = (site) => {
-    API.addToBucketlist(site.id).then(this.props.addBucketlistSiteToState);
-    this.setState({
-      saves: this.state.saves + 1,
-    });
-  };
-
-  handleRemoveFromBucketlist = (site_id) => {
-    API.removeFromBucketlist(site_id).then(
-      this.props.removeBucketlistSiteFromState
-    );
-    this.setState({
-      saves: this.state.saves - 1,
-    });
-  };
-
-  handleAddToVisited = (site) => {
-    API.addToVisited(site.id).then(this.props.addVisitedSiteToState);
-    !this.bucketlist &&
-      this.setState({
-        saves: this.state.saves + 1,
-      });
-  };
-
-  handleRemoveFromVisited = (site_id) => {
-    API.removeFromVisited(site_id).then(this.props.removeVisitedSiteFromState);
-    this.setState({
-      saves: this.state.saves - 1,
-    });
-  };
-
-  addToBucketlistButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to bucketlist</button>;
-    };
-
-    if (!localStorage.getItem("token")) {
-      return <Auth />;
-    } else {
-      return (
-        <button
-          className="active-button"
-          onClick={() => this.handleAddToBucketlist(this.props.site)}
-        >
-          Save to bucketlist
-        </button>
-      );
-    }
-  };
-
-  removeFromBucketlistButton = () => {
-    return (
-      <button
-        className="passive-button"
-        onClick={() => this.handleRemoveFromBucketlist(this.props.site.id)}
-      >
-        Remove from bucketlist
-      </button>
-    );
-  };
-
-  addToVisitedButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to visited</button>;
-    };
-
-    if (!localStorage.getItem("token")) {
-      return <Auth />;
-    } else {
-      return (
-        <button
-          className="active-button"
-          onClick={() => this.handleAddToVisited(this.props.site)}
-        >
-          Save to visited
-        </button>
-      );
-    }
-  };
-
-  removeFromVisitedButton = () => {
-    return (
-      <button
-        className="passive-button"
-        onClick={() => this.handleRemoveFromVisited(this.props.site.id)}
-      >
-        Remove from visited
-      </button>
-    );
-  };
-
-  buttons = () => {
-    const { bucketlist, visited } = this.props;
-    if (visited) {
-      return (
-        <div className="save-buttons-container">
-          {this.removeFromVisitedButton()}
-        </div>
-      );
-    } else if (bucketlist) {
-      return (
-        <div className="save-buttons-container">
-          {this.addToVisitedButton()}
-          {this.removeFromBucketlistButton()}
-        </div>
-      );
-    } else {
-      return (
-        <div className="save-buttons-container">
-          {this.addToVisitedButton()}
-          {this.addToBucketlistButton()}
-        </div>
-      );
-    }
-  };
 
   render() {
     const { site } = this.props;
-    const { saves } = this.state;
 
     return (
-      <div className="site-card-container">
-        <div className="site-card-image-container">
-          <img
-            className="site-card-image"
-            src={site.world_heritage_list.image_url}
-            alt={site.world_heritage_list.states}
-          />
-          <div className="site-card-buttons-hover-container ">
-            {this.buttons()}
+        <div className="site-card-container">
+          <div className="site-card-image-container">
+            <img
+                className="site-card-image"
+                src={site.world_heritage_list.image_url}
+                alt={site.world_heritage_list.states}
+            />
           </div>
-        </div>
 
-        <div className="site-card-details-container">
-          <div className="site-card-text-details-container">
-            <div className="site-card-country-container">
-              {/* {`${states
-                .map((state) => state["name"].toUpperCase())
-                .join(" | ")}`.length > 42
-                ? `${states
-                    .map((state) => state["name"].toUpperCase())
-                    .join(" | ")}`.substr(0, 40) + `...`
-                : `${states
-                    .map((state) => state["name"].toUpperCase())
-                    .join(" | ")}`} */}
-            </div>
-            <Link to={`/list/sites/${site.pid}`}>
-              <div className="site-card-name-container">
-                {site.world_heritage_list.site.length > 38
-                  ? `${site.world_heritage_list.site.substr(0, 32)}...`
-                  : site.world_heritage_list.site}
+          <div className="site-card-details-container">
+            <div className="site-card-text-details-container">
+              <div className="site-card-country-container">
               </div>
-            </Link>
-            <p>
-              {site.world_heritage_list.states.length > 38
-                ? `${site.world_heritage_list.states.substr(0, 32)}...`
-                : site.world_heritage_list.states}
-            </p>
-
-            {/* <div className="site-card-star-container">
-              <Icon name="star" className="star" size="small" />
-              {parseInt(saves) === 1
-                ? "1 person has saved this"
-                : `${site.saves} people have saved this`}
-            </div> */}
+              <Link to={`/list/sites/${site.pid}`}>
+                <div className="site-card-name-container">
+                  {site.world_heritage_list.site.length > 38
+                      ? `${site.world_heritage_list.site.substr(0, 32)}...`
+                      : site.world_heritage_list.site}
+                </div>
+              </Link>
+              <p>
+                {site.world_heritage_list.states.length > 38
+                    ? `${site.world_heritage_list.states.substr(0, 32)}...`
+                    : site.world_heritage_list.states}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
     );
   }
 }

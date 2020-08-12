@@ -14,7 +14,7 @@ const LoadingContainer = () => {
                 css={override}
                 sizeUnit={"px"}
                 size={15}
-                color={'#FD5C63'}
+                color={'#008080'}
             />
         </div>
 

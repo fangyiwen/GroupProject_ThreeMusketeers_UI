@@ -11,7 +11,10 @@ import UpdatePlace from './places/pages/UpdatePlace';
 import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
-import List from "./placesList/List";
+import HomeContainer from "./placesList/Containers/HomeContainer";
+import SearchResultsContainer from "./placesList/Containers/SearchResultContainer";
+import './App.css'
+import SiteContainer from "./placesList/Containers/SiteContainer";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,7 +42,13 @@ const App = () => {
           <Search />
         </Route>
           <Route path="/list" exact>
-              <List />
+              <HomeContainer />
+          </Route>
+          <Route path="/list/search/:region" exact>
+              <SearchResultsContainer/>
+          </Route>
+          <Route path="/list/sites/:id" exact>
+              <SiteContainer/>
           </Route>
         <Route path="/" exact>
           <Users />
@@ -66,7 +75,13 @@ const App = () => {
           <Search />
         </Route>
           <Route path="/list" exact>
-              <List />
+              <HomeContainer />
+          </Route>
+          <Route path="/list/search/:region" exact>
+              <SearchResultsContainer/>
+          </Route>
+          <Route path="/list/sites/:id" exact>
+              <SiteContainer/>
           </Route>
           <Route path="/" exact>
           <Users />

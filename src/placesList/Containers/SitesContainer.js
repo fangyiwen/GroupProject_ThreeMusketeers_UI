@@ -3,15 +3,7 @@ import SiteCard from "./SiteCard";
 import NoResults from "./NoResultsContainer";
 
 const SitesContainer = ({
-  sites,
-  bucketlist,
-  visited,
-  addBucketlistSiteToState,
-  addVisitedSiteToState,
-  removeBucketlistSiteFromState,
-  removeVisitedSiteFromState,
-  signin,
-  signup,
+  sites
 }) => {
   return (
     <div>
@@ -21,14 +13,6 @@ const SitesContainer = ({
             <SiteCard
               key={index}
               site={site}
-              signup={signup}
-              signin={signin}
-              bucketlist={bucketlist.map((site) => site.id).includes(site.id)}
-              visited={visited.map((site) => site.id).includes(site.id)}
-              addBucketlistSiteToState={addBucketlistSiteToState}
-              addVisitedSiteToState={addVisitedSiteToState}
-              removeBucketlistSiteFromState={removeBucketlistSiteFromState}
-              removeVisitedSiteFromState={removeVisitedSiteFromState}
             />
           ))}
         </div>

@@ -9,7 +9,6 @@ import Api from "./../../Api";
 class HomeContainer extends React.Component {
   state = {
     loading: true,
-
     africa: [],
     arabStates: [],
     asiaPacific: [],
@@ -49,19 +48,6 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-    const {
-      bucketlist,
-      visited,
-      europe_and_north_america,
-      latin_america_and_the_caribbean,
-      asia_and_the_pacific,
-      arab_states,
-      addBucketlistSiteToState,
-      addVisitedSiteToState,
-      removeBucketlistSiteFromState,
-      removeVisitedSiteFromState,
-      signin,
-    } = this.props;
 
     const {
       loading,
@@ -89,14 +75,7 @@ class HomeContainer extends React.Component {
                 Wildlife, medinas, and ancient wonders...
               </div>
               <SitesContainer
-                signin={signin}
                 sites={africa}
-                visited={visited}
-                bucketlist={bucketlist}
-                addBucketlistSiteToState={addBucketlistSiteToState}
-                addVisitedSiteToState={addVisitedSiteToState}
-                removeBucketlistSiteFromState={removeBucketlistSiteFromState}
-                removeVisitedSiteFromState={removeVisitedSiteFromState}
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
@@ -116,14 +95,7 @@ class HomeContainer extends React.Component {
                 Rich in history and beauty...
               </div>
               <SitesContainer
-                signin={signin}
                 sites={arabStates}
-                visited={visited}
-                bucketlist={bucketlist}
-                addBucketlistSiteToState={addBucketlistSiteToState}
-                addVisitedSiteToState={addVisitedSiteToState}
-                removeBucketlistSiteFromState={removeBucketlistSiteFromState}
-                removeVisitedSiteFromState={removeVisitedSiteFromState}
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
@@ -143,14 +115,7 @@ class HomeContainer extends React.Component {
                 Rugged landscapes and fascinating history...
               </div>
               <SitesContainer
-                signin={signin}
                 sites={asiaPacific}
-                visited={visited}
-                bucketlist={bucketlist}
-                addBucketlistSiteToState={addBucketlistSiteToState}
-                addVisitedSiteToState={addVisitedSiteToState}
-                removeBucketlistSiteFromState={removeBucketlistSiteFromState}
-                removeVisitedSiteFromState={removeVisitedSiteFromState}
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
@@ -170,14 +135,7 @@ class HomeContainer extends React.Component {
                 Historic architecture and stunning landscapes...
               </div>
               <SitesContainer
-                signin={signin}
                 sites={europeNorthAmerica}
-                visited={visited}
-                bucketlist={bucketlist}
-                addBucketlistSiteToState={addBucketlistSiteToState}
-                addVisitedSiteToState={addVisitedSiteToState}
-                removeBucketlistSiteFromState={removeBucketlistSiteFromState}
-                removeVisitedSiteFromState={removeVisitedSiteFromState}
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
@@ -197,14 +155,7 @@ class HomeContainer extends React.Component {
                 Biodiversity found no where else...
               </div>
               <SitesContainer
-                signin={signin}
                 sites={latinAmericaCaribbean}
-                visited={visited}
-                bucketlist={bucketlist}
-                addBucketlistSiteToState={addBucketlistSiteToState}
-                addVisitedSiteToState={addVisitedSiteToState}
-                removeBucketlistSiteFromState={removeBucketlistSiteFromState}
-                removeVisitedSiteFromState={removeVisitedSiteFromState}
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">

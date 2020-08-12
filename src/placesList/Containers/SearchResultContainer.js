@@ -3,37 +3,12 @@ import { withRouter } from "react-router-dom";
 import API from "./../../Api";
 import SitesContainer from "./SitesContainer";
 import LoadingContainer from "./LoadingContainer";
-import { sites } from "./../../shared/components/data/whl.json";
 
 class SearchResultsContainer extends React.PureComponent {
   state = {
     sites: [],
     searchCriteria: "",
     loading: true,
-  };
-
-  getSearchResultsBasedOnURL = () => {
-    if (this.props.match.url.split("/").includes("search_by_tag")) {
-      let split_url = this.props.match.url.split("/");
-      let tag = split_url[split_url.length - 1];
-      API.searchByTag(tag).then((data) =>
-        this.setState({
-          sites: data,
-          searchCriteria: tag,
-          loading: false,
-        })
-      );
-    } else {
-      let url = this.props.match.url;
-      API.search(url).then((data) =>
-        this.setState({
-          sites: data,
-          searchCriteria: url.split("=")[1].split("+").join(" "),
-          loading: false,
-        })
-      );
-    }
-    window.scrollTo(0, 0);
   };
 
   componentDidMount() {
@@ -56,26 +31,7 @@ class SearchResultsContainer extends React.PureComponent {
     });
   }
 
-  componentDidUpdate(prevProps) {
-    // if (prevProps.match.url !== this.props.match.url) {
-    //   this.setState({
-    //     loading: true,
-    //   });
-    //   this.getSearchResultsBasedOnURL();
-    // }
-  }
-
   render() {
-    const {
-      bucketlist,
-      visited,
-      addBucketlistSiteToState,
-      addVisitedSiteToState,
-      removeBucketlistSiteFromState,
-      removeVisitedSiteFromState,
-      signin,
-    } = this.props;
-
     const { sites, searchCriteria, loading } = this.state;
 
     return (
@@ -91,14 +47,7 @@ class SearchResultsContainer extends React.PureComponent {
             </div>
 
             <SitesContainer
-              signin={signin}
               sites={sites}
-              visited={visited}
-              bucketlist={bucketlist}
-              addBucketlistSiteToState={addBucketlistSiteToState}
-              addVisitedSiteToState={addVisitedSiteToState}
-              removeBucketlistSiteFromState={removeBucketlistSiteFromState}
-              removeVisitedSiteFromState={removeVisitedSiteFromState}
             />
           </div>
         )}

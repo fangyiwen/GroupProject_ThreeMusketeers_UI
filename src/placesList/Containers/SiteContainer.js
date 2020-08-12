@@ -13,8 +13,6 @@ class SiteContainer extends React.Component {
     site: {
       world_heritage_list: {},
     },
-    bucketlist: [],
-    visited: [],
     loading: true,
   };
 
@@ -23,142 +21,14 @@ class SiteContainer extends React.Component {
   }
 
   async getdataList() {
-    var id = this.props.match.params.id;
-    var newList = await API.getListDataById(id);
+    const id = this.props.match.params.id;
+    const newList = await API.getListDataById(id);
 
     this.setState({
       site: newList.place,
       loading: false,
     });
   }
-
-  handleAddToBucketlist = (site) => {
-    API.addToBucketlist(site.id).then(this.props.addBucketlistSiteToState);
-    this.setState({
-      bucketlist: true,
-    });
-  };
-
-  handleRemoveFromBucketlist = (site_id) => {
-    API.removeFromBucketlist(site_id).then(
-      this.props.removeBucketlistSiteFromState
-    );
-    this.setState({
-      bucketlist: false,
-    });
-  };
-
-  handleAddToVisited = (site) => {
-    API.addToVisited(site.id).then(this.props.addVisitedSiteToState);
-    !this.bucketlist &&
-      this.setState({
-        visited: true,
-      });
-  };
-
-  handleRemoveFromVisited = (site_id) => {
-    API.removeFromVisited(site_id).then(this.props.removeVisitedSiteFromState);
-    this.setState({
-      visited: false,
-    });
-  };
-
-  addToBucketlistButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to bucketlist</button>;
-    };
-
-    if (!localStorage.getItem("token")) {
-      return (
-        <Auth
-          signin={this.props.signin}
-          modalTrigger={modalTrigger}
-          status={"login"}
-        />
-      );
-    } else {
-      return (
-        <button
-          className="active-button"
-          onClick={() => this.handleAddToBucketlist(this.state.site)}
-        >
-          Save to bucketlist
-        </button>
-      );
-    }
-  };
-
-  removeFromBucketlistButton = () => {
-    return (
-      <button
-        className="passive-button"
-        onClick={() => this.handleRemoveFromBucketlist(this.state.site.id)}
-      >
-        Remove from bucketlist
-      </button>
-    );
-  };
-
-  addToVisitedButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to visited</button>;
-    };
-
-    if (!localStorage.getItem("token")) {
-      return (
-        <Auth
-          signin={this.props.signin}
-          modalTrigger={modalTrigger}
-          status={"login"}
-        />
-      );
-    } else {
-      return (
-        <button
-          className="active-button"
-          onClick={() => this.handleAddToVisited(this.state.site)}
-        >
-          Save to visited
-        </button>
-      );
-    }
-  };
-
-  removeFromVisitedButton = () => {
-    return (
-      <button
-        className="passive-button"
-        onClick={() => this.handleRemoveFromVisited(this.state.site.id)}
-      >
-        Remove from visited
-      </button>
-    );
-  };
-
-  buttons = () => {
-    const { bucketlist, visited } = this.state;
-    if (visited) {
-      return (
-        <div className="save-buttons-container-site-show-page">
-          {this.removeFromVisitedButton()}
-        </div>
-      );
-    } else if (bucketlist) {
-      return (
-        <div className="save-buttons-container-site-show-page">
-          {this.addToVisitedButton()}
-          {this.removeFromBucketlistButton()}
-        </div>
-      );
-    } else {
-      return (
-        <div className="save-buttons-container-site-show-page">
-          {this.addToVisitedButton()}
-          {this.addToBucketlistButton()}
-        </div>
-      );
-    }
-  };
 
   renderMapContainer = () => {
     if (this.state.site.world_heritage_list.longitude) {
@@ -223,8 +93,6 @@ class SiteContainer extends React.Component {
                   alt={site.world_heritage_list.site}
                 />
               </div>
-
-              {/* <TagsContainer tags={tags} /> */}
 
               <div className="site-description-container">
                 <div className="site-description-container-header">
@@ -303,14 +171,6 @@ class SiteContainer extends React.Component {
                 </div>
                 <div className="site-detail">{iso_codesStr}</div>
               </div>
-
-              <div className="underline"> </div>
-
-              {/* <div className="site-sub-details-container-buttons">
-                {this.buttons()}
-              </div> */}
-
-              <div className="underline"></div>
 
               <div className="unesco-link-container">
                 <a
