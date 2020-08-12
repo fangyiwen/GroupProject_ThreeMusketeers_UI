@@ -1,8 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router, Route, Redirect, Switch,
+} from 'react-router-dom';
 
-import Home from './shared/components/UIElements/Home'
-import Search from './shared/components/UIElements/Search'
+import Home from './shared/components/UIElements/Home';
+import Search from './shared/components/UIElements/Search';
 
 import Users from './user/pages/Users';
 import NewPlace from './places/pages/NewPlace';
@@ -11,16 +13,16 @@ import UpdatePlace from './places/pages/UpdatePlace';
 import Auth from './user/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
-import HomeContainer from "./placesList/Containers/HomeContainer";
-import SearchResultsContainer from "./placesList/Containers/SearchResultContainer";
-import './App.css'
-import SiteContainer from "./placesList/Containers/SiteContainer";
+import HomeContainer from './placesList/Containers/HomeContainer';
+import SearchResultsContainer from './placesList/Containers/SearchResultContainer';
+import './App.css';
+import SiteContainer from './placesList/Containers/SiteContainer';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userId, setUserId] = useState(false);
 
-  const login = useCallback(uid => {
+  const login = useCallback((uid) => {
     setIsLoggedIn(true);
     setUserId(uid);
   }, []);
@@ -99,7 +101,9 @@ const App = () => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn: isLoggedIn, userId: userId, login: login, logout: logout }}
+      value={{
+        isLoggedIn, userId, login, logout,
+      }}
     >
       <Router>
         <MainNavigation />

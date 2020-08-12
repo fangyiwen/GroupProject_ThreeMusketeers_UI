@@ -1,13 +1,13 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import API from "./../../Api";
-import SitesContainer from "./SitesContainer";
-import LoadingContainer from "./LoadingContainer";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import API from '../../Api';
+import SitesContainer from './SitesContainer';
+import LoadingContainer from './LoadingContainer';
 
 class SearchResultsContainer extends React.PureComponent {
   state = {
     sites: [],
-    searchCriteria: "",
+    searchCriteria: '',
     loading: true,
   };
 
@@ -17,16 +17,16 @@ class SearchResultsContainer extends React.PureComponent {
 
   async getdataList() {
     //   eliminate +
-    var { region } = this.props.match.params;
-    var newRegion = region.replace(/\+/g, " ");
-    let url = this.props.match.url;
-    var data = await API.getListData();
-    var newList = data.places.filter(
-      (item) => item.world_heritage_list.region === newRegion
+    const { region } = this.props.match.params;
+    const newRegion = region.replace(/\+/g, ' ');
+    const { url } = this.props.match;
+    const data = await API.getListData();
+    const newList = data.places.filter(
+      (item) => item.world_heritage_list.region === newRegion,
     );
     this.setState({
       sites: newList,
-      searchCriteria: url.split("/").pop().replace(/\+/g, " "),
+      searchCriteria: url.split('/').pop().replace(/\+/g, ' '),
       loading: false,
     });
   }

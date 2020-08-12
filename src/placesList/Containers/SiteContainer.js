@@ -1,8 +1,8 @@
-import React from "react";
-import API from "./../../Api";
-import { Icon } from "semantic-ui-react";
-import MapContainer from "./MapContainer";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { Icon } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
+import API from '../../Api';
+import MapContainer from './MapContainer';
 
 class SiteContainer extends React.Component {
   state = {
@@ -17,7 +17,7 @@ class SiteContainer extends React.Component {
   }
 
   async getdataList() {
-    const id = this.props.match.params.id;
+    const { id } = this.props.match.params;
     const newList = await API.getListDataById(id);
 
     this.setState({
@@ -30,11 +30,11 @@ class SiteContainer extends React.Component {
     if (this.state.site.world_heritage_list.longitude) {
       const latitudeAsFloat = parseFloat(
         this.state.site.world_heritage_list.latitude,
-        10
+        10,
       );
       const longitudeAsFloat = parseFloat(
         this.state.site.world_heritage_list.longitude,
-        10
+        10,
       );
       const center = { lat: latitudeAsFloat, lng: longitudeAsFloat };
 
@@ -51,16 +51,16 @@ class SiteContainer extends React.Component {
 
   render() {
     const { site } = this.state;
-    console.log("site -> :", site);
-    let states = site.world_heritage_list.states
-      ? site.world_heritage_list.states.split(",")
+    console.log('site -> :', site);
+    const states = site.world_heritage_list.states
+      ? site.world_heritage_list.states.split(',')
       : [];
-    let statesStr = states.map((code) => code.toUpperCase()).join(",");
+    const statesStr = states.map((code) => code.toUpperCase()).join(',');
 
-    let iso_codes = site.world_heritage_list.iso_code
-      ? site.world_heritage_list.iso_code.split(",")
+    const iso_codes = site.world_heritage_list.iso_code
+      ? site.world_heritage_list.iso_code.split(',')
       : [];
-    let iso_codesStr = iso_codes.map((code) => code.toUpperCase()).join(",");
+    const iso_codesStr = iso_codes.map((code) => code.toUpperCase()).join(',');
 
     return (
       <div className="page-content-container">
@@ -126,7 +126,7 @@ class SiteContainer extends React.Component {
               <div className="site-sub-details-container">
                 <div className="site-detail-description">
                   <Icon name="location arrow" />
-                  {states && (states.length > 1 ? `COUNTRIES` : `COUNTRY`)}
+                  {states && (states.length > 1 ? 'COUNTRIES' : 'COUNTRY')}
                 </div>
                 <div className="site-detail">{statesStr}</div>
               </div>
@@ -162,8 +162,8 @@ class SiteContainer extends React.Component {
               <div className="site-sub-details-container">
                 <div className="site-detail-description">
                   <Icon name="barcode" />
-                  {iso_codes &&
-                    (iso_codes.length > 1 ? `COUNTRY CODES` : `COUNTRY CODE`)}
+                  {iso_codes
+                    && (iso_codes.length > 1 ? 'COUNTRY CODES' : 'COUNTRY CODE')}
                 </div>
                 <div className="site-detail">{iso_codesStr}</div>
               </div>

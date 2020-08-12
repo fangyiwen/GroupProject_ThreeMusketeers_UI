@@ -1,8 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SiteCard extends React.Component {
-
   render() {
     const { site } = this.props;
 
@@ -23,14 +22,14 @@ class SiteCard extends React.Component {
               <Link to={`/list/sites/${site.pid}`}>
                 <div className="site-card-name-container">
                   {site.world_heritage_list.site.length > 38
-                      ? `${site.world_heritage_list.site.substr(0, 32)}...`
-                      : site.world_heritage_list.site}
+                    ? `${site.world_heritage_list.site.substr(0, 32)}...`
+                    : site.world_heritage_list.site}
                 </div>
               </Link>
               <p>
                 {site.world_heritage_list.states.length > 38
-                    ? `${site.world_heritage_list.states.substr(0, 32)}...`
-                    : site.world_heritage_list.states}
+                  ? `${site.world_heritage_list.states.substr(0, 32)}...`
+                  : site.world_heritage_list.states}
               </p>
             </div>
           </div>

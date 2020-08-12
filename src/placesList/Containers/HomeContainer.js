@@ -47,7 +47,6 @@ class HomeContainer extends React.Component {
   }
 
   render() {
-
     const {
       loading,
       africa,
