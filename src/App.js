@@ -24,11 +24,11 @@ const App = () => {
 
   const login = useCallback((uid, token) => {
     setToken(token);
+    setUserId(uid);
     localStorage.setItem(
       'userData',
-      JSON.stringify({ userId: uid, token }),
+      JSON.stringify({ userId: uid, token: token })
     );
-    setUserId(uid);
   }, []);
 
   const logout = useCallback(() => {
