@@ -1,18 +1,18 @@
-import React from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import "./List.css";
+import './List.css';
 
-import API from "./../Api";
-import SiteContainer from "./Containers/SiteContainer";
-import HomeContainer from "./Containers/HomeContainer";
-import SearchResultsContainer from "./Containers/SearchResultContainer";
-import SavedContainer from "./Containers/SavedContainer";
+import API from '../Api';
+import SiteContainer from './Containers/SiteContainer';
+import HomeContainer from './Containers/HomeContainer';
+import SearchResultsContainer from './Containers/SearchResultContainer';
+import SavedContainer from './Containers/SavedContainer';
 
 class List extends React.Component {
   state = {
-    user_id: "",
-    first_name: "",
+    user_id: '',
+    first_name: '',
     bucketlist: [],
     visited: [],
     europe_and_north_america: [],
@@ -23,7 +23,7 @@ class List extends React.Component {
   };
 
   componentDidMount() {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token) {
       API.validate()
         .then((data) => {
@@ -40,9 +40,9 @@ class List extends React.Component {
         user_id: user.id,
         first_name: user.first_name,
       },
-      () => this.getBucketlistAndVisited(user.id)
+      () => this.getBucketlistAndVisited(user.id),
     );
-    localStorage.setItem("token", user.token);
+    localStorage.setItem('token', user.token);
   };
 
   getBucketlistAndVisited = async (user_id) => {
@@ -64,8 +64,8 @@ class List extends React.Component {
   };
 
   removeBucketlistSiteFromState = (site_id) => {
-    let filteredBucketlist = this.state.bucketlist.filter(
-      (site) => site.id !== site_id
+    const filteredBucketlist = this.state.bucketlist.filter(
+      (site) => site.id !== site_id,
     );
     this.setState({
       ...this.state,
@@ -74,8 +74,8 @@ class List extends React.Component {
   };
 
   addVisitedSiteToState = (site) => {
-    let filteredBucketlist = this.state.bucketlist.filter(
-      (s) => s.id !== site.id
+    const filteredBucketlist = this.state.bucketlist.filter(
+      (s) => s.id !== site.id,
     );
     this.setState({
       ...this.state,
@@ -85,8 +85,8 @@ class List extends React.Component {
   };
 
   removeVisitedSiteFromState = (site_id) => {
-    let filteredVisited = this.state.visited.filter(
-      (site) => site.id !== site_id
+    const filteredVisited = this.state.visited.filter(
+      (site) => site.id !== site_id,
     );
     this.setState({
       ...this.state,
@@ -96,12 +96,12 @@ class List extends React.Component {
 
   signout = () => {
     this.setState({
-      user_id: "",
-      first_name: "",
+      user_id: '',
+      first_name: '',
       bucketlist: [],
       visited: [],
     });
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
   };
 
   render() {

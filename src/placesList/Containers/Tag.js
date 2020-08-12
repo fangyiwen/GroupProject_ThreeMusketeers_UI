@@ -1,8 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Tag = props => {
-    return (
+const Tag = (props) => (
         <Link to={`/search_by_tag/${props.tag}`}>
             <div className='tag'>
                 <div className="tag-text">
@@ -10,7 +9,6 @@ const Tag = props => {
                 </div>
             </div>
         </Link>
-    )
-}
+);
 
-export default Tag
+export default Tag;

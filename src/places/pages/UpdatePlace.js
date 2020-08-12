@@ -8,7 +8,7 @@ import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 import {
   VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH
+  VALIDATOR_MINLENGTH,
 } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
 import { useHttpClient } from '../../shared/hooks/http-hooks';
@@ -17,52 +17,53 @@ import './PlaceForm.css';
 
 const UpdatePlace = () => {
   const auth = useContext(AuthContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const {
+    isLoading, error, sendRequest, clearError,
+  } = useHttpClient();
   const [loadedPlace, setLoadedPlace] = useState();
-  const placeId = useParams().placeId;
+  const { placeId } = useParams();
   const history = useHistory();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
       title: {
         value: '',
-        isValid: false
+        isValid: false,
       },
       description: {
         value: '',
-        isValid: false
-      }
+        isValid: false,
+      },
     },
-    false
+    false,
   );
 
   useEffect(() => {
     const fetchPlace = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/customPlaces/${placeId}`
+          `http://localhost:5000/api/customPlaces/${placeId}`,
         );
         setLoadedPlace(responseData.place);
         setFormData(
           {
             title: {
               value: responseData.place.title,
-              isValid: true
+              isValid: true,
             },
             description: {
               value: responseData.place.description,
-              isValid: true
-            }
+              isValid: true,
+            },
           },
-          true
+          true,
         );
-
       } catch (err) {}
     };
     fetchPlace();
   }, [sendRequest, placeId, setFormData]);
 
-  const placeUpdateSubmitHandler = async event => {
+  const placeUpdateSubmitHandler = async (event) => {
     event.preventDefault();
     try {
       await sendRequest(
@@ -70,13 +71,13 @@ const UpdatePlace = () => {
         'PATCH',
         JSON.stringify({
           title: formState.inputs.title.value,
-          description: formState.inputs.description.value
+          description: formState.inputs.description.value,
         }),
         {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       );
-      history.push('/' + auth.userId + '/places');
+      history.push(`/${auth.userId}/places`);
     } catch (err) {}
   };
 

@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const NoResults = () =>
-    <div className="no-results-container">
+const NoResults = () => <div className="no-results-container">
         No results found. Please try your search again.
-    </div>
+    </div>;
 
-
-export default NoResults
+export default NoResults;

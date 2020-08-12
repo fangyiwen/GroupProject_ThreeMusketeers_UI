@@ -1,12 +1,12 @@
-import React from "react";
-import API from "./../../Api";
-import { Icon } from "semantic-ui-react";
-import TagsContainer from "./TagsContainer";
-import MapContainer from "./MapContainer";
-import LoadingContainer from "./LoadingContainer";
-import Auth from "../../user/pages/Auth";
-import { sites } from "./../../shared/components/data/whl.json";
-import { withRouter } from "react-router-dom";
+import React from 'react';
+import { Icon } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
+import API from '../../Api';
+import TagsContainer from './TagsContainer';
+import MapContainer from './MapContainer';
+import LoadingContainer from './LoadingContainer';
+import Auth from '../../user/pages/Auth';
+import { sites } from '../../shared/components/data/whl.json';
 
 class SiteContainer extends React.Component {
   state = {
@@ -23,8 +23,8 @@ class SiteContainer extends React.Component {
   }
 
   async getdataList() {
-    var id = this.props.match.params.id;
-    var newList = await API.getListDataById(id);
+    const { id } = this.props.match.params;
+    const newList = await API.getListDataById(id);
 
     this.setState({
       site: newList.place,
@@ -41,7 +41,7 @@ class SiteContainer extends React.Component {
 
   handleRemoveFromBucketlist = (site_id) => {
     API.removeFromBucketlist(site_id).then(
-      this.props.removeBucketlistSiteFromState
+      this.props.removeBucketlistSiteFromState,
     );
     this.setState({
       bucketlist: false,
@@ -50,8 +50,8 @@ class SiteContainer extends React.Component {
 
   handleAddToVisited = (site) => {
     API.addToVisited(site.id).then(this.props.addVisitedSiteToState);
-    !this.bucketlist &&
-      this.setState({
+    !this.bucketlist
+      && this.setState({
         visited: true,
       });
   };
@@ -64,76 +64,66 @@ class SiteContainer extends React.Component {
   };
 
   addToBucketlistButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to bucketlist</button>;
-    };
+    const modalTrigger = () => <button className="active-button">Save to bucketlist</button>;
 
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem('token')) {
       return (
         <Auth
           signin={this.props.signin}
           modalTrigger={modalTrigger}
-          status={"login"}
+          status={'login'}
         />
       );
-    } else {
-      return (
+    }
+    return (
         <button
           className="active-button"
           onClick={() => this.handleAddToBucketlist(this.state.site)}
         >
           Save to bucketlist
         </button>
-      );
-    }
+    );
   };
 
-  removeFromBucketlistButton = () => {
-    return (
+  removeFromBucketlistButton = () => (
       <button
         className="passive-button"
         onClick={() => this.handleRemoveFromBucketlist(this.state.site.id)}
       >
         Remove from bucketlist
       </button>
-    );
-  };
+  );
 
   addToVisitedButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to visited</button>;
-    };
+    const modalTrigger = () => <button className="active-button">Save to visited</button>;
 
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem('token')) {
       return (
         <Auth
           signin={this.props.signin}
           modalTrigger={modalTrigger}
-          status={"login"}
+          status={'login'}
         />
       );
-    } else {
-      return (
+    }
+    return (
         <button
           className="active-button"
           onClick={() => this.handleAddToVisited(this.state.site)}
         >
           Save to visited
         </button>
-      );
-    }
+    );
   };
 
-  removeFromVisitedButton = () => {
-    return (
+  removeFromVisitedButton = () => (
       <button
         className="passive-button"
         onClick={() => this.handleRemoveFromVisited(this.state.site.id)}
       >
         Remove from visited
       </button>
-    );
-  };
+  );
 
   buttons = () => {
     const { bucketlist, visited } = this.state;
@@ -143,32 +133,31 @@ class SiteContainer extends React.Component {
           {this.removeFromVisitedButton()}
         </div>
       );
-    } else if (bucketlist) {
+    } if (bucketlist) {
       return (
         <div className="save-buttons-container-site-show-page">
           {this.addToVisitedButton()}
           {this.removeFromBucketlistButton()}
         </div>
       );
-    } else {
-      return (
+    }
+    return (
         <div className="save-buttons-container-site-show-page">
           {this.addToVisitedButton()}
           {this.addToBucketlistButton()}
         </div>
-      );
-    }
+    );
   };
 
   renderMapContainer = () => {
     if (this.state.site.world_heritage_list.longitude) {
       const latitudeAsFloat = parseFloat(
         this.state.site.world_heritage_list.latitude,
-        10
+        10,
       );
       const longitudeAsFloat = parseFloat(
         this.state.site.world_heritage_list.longitude,
-        10
+        10,
       );
       const center = { lat: latitudeAsFloat, lng: longitudeAsFloat };
 
@@ -185,16 +174,16 @@ class SiteContainer extends React.Component {
 
   render() {
     const { site } = this.state;
-    console.log("site -> :", site);
-    let states = site.world_heritage_list.states
-      ? site.world_heritage_list.states.split(",")
+    console.log('site -> :', site);
+    const states = site.world_heritage_list.states
+      ? site.world_heritage_list.states.split(',')
       : [];
-    let statesStr = states.map((code) => code.toUpperCase()).join(",");
+    const statesStr = states.map((code) => code.toUpperCase()).join(',');
 
-    let iso_codes = site.world_heritage_list.iso_code
-      ? site.world_heritage_list.iso_code.split(",")
+    const iso_codes = site.world_heritage_list.iso_code
+      ? site.world_heritage_list.iso_code.split(',')
       : [];
-    let iso_codesStr = iso_codes.map((code) => code.toUpperCase()).join(",");
+    const iso_codesStr = iso_codes.map((code) => code.toUpperCase()).join(',');
 
     return (
       <div className="page-content-container">
@@ -262,7 +251,7 @@ class SiteContainer extends React.Component {
               <div className="site-sub-details-container">
                 <div className="site-detail-description">
                   <Icon name="location arrow" />
-                  {states && (states.length > 1 ? `COUNTRIES` : `COUNTRY`)}
+                  {states && (states.length > 1 ? 'COUNTRIES' : 'COUNTRY')}
                 </div>
                 <div className="site-detail">{statesStr}</div>
               </div>
@@ -298,8 +287,8 @@ class SiteContainer extends React.Component {
               <div className="site-sub-details-container">
                 <div className="site-detail-description">
                   <Icon name="barcode" />
-                  {iso_codes &&
-                    (iso_codes.length > 1 ? `COUNTRY CODES` : `COUNTRY CODE`)}
+                  {iso_codes
+                    && (iso_codes.length > 1 ? 'COUNTRY CODES' : 'COUNTRY CODE')}
                 </div>
                 <div className="site-detail">{iso_codesStr}</div>
               </div>

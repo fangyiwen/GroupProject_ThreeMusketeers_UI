@@ -6,11 +6,13 @@ import Modal from '../../shared/components/UIElements/Modal';
 import Map from '../../shared/components/UIElements/Map';
 import { AuthContext } from '../../shared/context/auth-context';
 import './PlaceItem.css';
-import {useHttpClient} from "../../shared/hooks/http-hooks";
-import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import { useHttpClient } from '../../shared/hooks/http-hooks';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 
-const PlaceItem = props => {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+const PlaceItem = (props) => {
+  const {
+    isLoading, error, sendRequest, clearError,
+  } = useHttpClient();
   const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -31,8 +33,8 @@ const PlaceItem = props => {
     setShowConfirmModal(false);
     try {
       await sendRequest(
-          `http://localhost:5000/api/customPlaces/${props.id}`,
-          'DELETE'
+        `http://localhost:5000/api/customPlaces/${props.id}`,
+        'DELETE',
       );
       props.onDelete(props.id);
     } catch (err) {}

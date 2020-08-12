@@ -1,12 +1,12 @@
-import React, { Fragment } from "react";
-import MapContainer from "./MapContainer";
+import React, { Fragment } from 'react';
+import MapContainer from './MapContainer';
 
 export default function Search() {
-    return (
+  return (
         <Fragment>
         <div>
         <MapContainer />
         </div>
         </Fragment>
-    );
-};
+  );
+}

@@ -1,4 +1,4 @@
-export let whc = [
+export const whc = [
   {
     category: 'Natural',
     criteria_txt: '(ix)',
@@ -803,5 +803,5 @@ export let whc = [
     states: 'Honduras',
     transboundary: '0',
     unique_number: '217',
-  }
+  },
 ];

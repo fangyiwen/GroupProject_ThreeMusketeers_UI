@@ -1,34 +1,34 @@
-import React from 'react'
-import SitesContainer from './SitesContainer'
-import LoadingContainer from './LoadingContainer'
+import React from 'react';
+import SitesContainer from './SitesContainer';
+import LoadingContainer from './LoadingContainer';
 
 class SavedContainer extends React.Component {
     state = {
-        loading: true
+      loading: true,
     }
 
-    componentDidMount () {
-        !localStorage.getItem('token') && this.props.history.push('/')
-        this.props && this.setState({ loading: false })
-        window.scrollTo(0, 0)
+    componentDidMount() {
+      !localStorage.getItem('token') && this.props.history.push('/');
+      this.props && this.setState({ loading: false });
+      window.scrollTo(0, 0);
     }
 
-    render () {
-        const {
-            bucketlist,
-            visited,
-            addBucketlistSiteToState,
-            addVisitedSiteToState,
-            removeBucketlistSiteFromState,
-            removeVisitedSiteFromState
-        } = this.props
+    render() {
+      const {
+        bucketlist,
+        visited,
+        addBucketlistSiteToState,
+        addVisitedSiteToState,
+        removeBucketlistSiteFromState,
+        removeVisitedSiteFromState,
+      } = this.props;
 
-        return (
+      return (
             <div className='saved-page-content-container'>
 
-                {this.state.loading ? <LoadingContainer/> :
+                {this.state.loading ? <LoadingContainer/>
 
-                    <React.Fragment>
+                  : <React.Fragment>
                         <div className='bucketlist-and-visited-content-container'>
                             <div className="bucketlist-and-visited-content-container-header">
                                 <div className='primary-header-container'>My Bucketlist</div>
@@ -64,8 +64,8 @@ class SavedContainer extends React.Component {
                         </div>
                     </React.Fragment>}
             </div>
-        )
+      );
     }
 }
 
-export default SavedContainer
+export default SavedContainer;

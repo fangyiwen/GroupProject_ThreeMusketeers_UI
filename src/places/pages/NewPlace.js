@@ -1,48 +1,50 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 
 import Input from '../../shared/components/FormElements/Input';
 import Button from '../../shared/components/FormElements/Button';
 import {
   VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH
+  VALIDATOR_MINLENGTH,
 } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
 import './PlaceForm.css';
-import ImageUpload from "../../shared/components/FormElements/ImageUpload";
-import {useHttpClient} from "../../shared/hooks/http-hooks";
-import {AuthContext} from "../../shared/context/auth-context";
-import ErrorModal from "../../shared/components/UIElements/ErrorModal";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
+import { useHttpClient } from '../../shared/hooks/http-hooks';
+import { AuthContext } from '../../shared/context/auth-context';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 import { useHistory } from 'react-router-dom';
 
 const NewPlace = () => {
-    const auth = useContext(AuthContext);
-    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const auth = useContext(AuthContext);
+  const {
+    isLoading, error, sendRequest, clearError,
+  } = useHttpClient();
   const [formState, inputHandler] = useForm(
     {
       title: {
         value: '',
-        isValid: false
+        isValid: false,
       },
       description: {
         value: '',
-        isValid: false
+        isValid: false,
       },
       address: {
         value: '',
-        isValid: false
+        isValid: false,
       },
       image: {
         value: null,
-        isValid: false
-      }
+        isValid: false,
+      },
     },
-    false
+    false,
   );
 
   const history = useHistory();
 
-  const placeSubmitHandler = async event => {
+  const placeSubmitHandler = async (event) => {
     event.preventDefault();
     try {
       const formData = new FormData();

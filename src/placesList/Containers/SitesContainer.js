@@ -1,6 +1,6 @@
-import React from "react";
-import SiteCard from "./SiteCard";
-import NoResults from "./NoResultsContainer";
+import React from 'react';
+import SiteCard from './SiteCard';
+import NoResults from './NoResultsContainer';
 
 const SitesContainer = ({
   sites,
@@ -12,8 +12,7 @@ const SitesContainer = ({
   removeVisitedSiteFromState,
   signin,
   signup,
-}) => {
-  return (
+}) => (
     <div>
       {sites.length > 0 ? (
         <div className="sites-container">
@@ -36,7 +35,6 @@ const SitesContainer = ({
         <NoResults />
       )}
     </div>
-  );
-};
+);
 
 export default SitesContainer;

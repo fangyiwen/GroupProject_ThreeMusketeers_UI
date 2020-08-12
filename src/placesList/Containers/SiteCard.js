@@ -1,9 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import API from "./../../Api";
-import { Icon } from "semantic-ui-react";
-import Auth from "../../user/pages/Auth";
+import { Icon } from 'semantic-ui-react';
+import API from '../../Api';
+import Auth from '../../user/pages/Auth';
 
 class SiteCard extends React.Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class SiteCard extends React.Component {
 
   handleRemoveFromBucketlist = (site_id) => {
     API.removeFromBucketlist(site_id).then(
-      this.props.removeBucketlistSiteFromState
+      this.props.removeBucketlistSiteFromState,
     );
     this.setState({
       saves: this.state.saves - 1,
@@ -31,8 +31,8 @@ class SiteCard extends React.Component {
 
   handleAddToVisited = (site) => {
     API.addToVisited(site.id).then(this.props.addVisitedSiteToState);
-    !this.bucketlist &&
-      this.setState({
+    !this.bucketlist
+      && this.setState({
         saves: this.state.saves + 1,
       });
   };
@@ -45,64 +45,54 @@ class SiteCard extends React.Component {
   };
 
   addToBucketlistButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to bucketlist</button>;
-    };
+    const modalTrigger = () => <button className="active-button">Save to bucketlist</button>;
 
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem('token')) {
       return <Auth />;
-    } else {
-      return (
+    }
+    return (
         <button
           className="active-button"
           onClick={() => this.handleAddToBucketlist(this.props.site)}
         >
           Save to bucketlist
         </button>
-      );
-    }
+    );
   };
 
-  removeFromBucketlistButton = () => {
-    return (
+  removeFromBucketlistButton = () => (
       <button
         className="passive-button"
         onClick={() => this.handleRemoveFromBucketlist(this.props.site.id)}
       >
         Remove from bucketlist
       </button>
-    );
-  };
+  );
 
   addToVisitedButton = () => {
-    const modalTrigger = () => {
-      return <button className="active-button">Save to visited</button>;
-    };
+    const modalTrigger = () => <button className="active-button">Save to visited</button>;
 
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem('token')) {
       return <Auth />;
-    } else {
-      return (
+    }
+    return (
         <button
           className="active-button"
           onClick={() => this.handleAddToVisited(this.props.site)}
         >
           Save to visited
         </button>
-      );
-    }
+    );
   };
 
-  removeFromVisitedButton = () => {
-    return (
+  removeFromVisitedButton = () => (
       <button
         className="passive-button"
         onClick={() => this.handleRemoveFromVisited(this.props.site.id)}
       >
         Remove from visited
       </button>
-    );
-  };
+  );
 
   buttons = () => {
     const { bucketlist, visited } = this.props;
@@ -112,21 +102,20 @@ class SiteCard extends React.Component {
           {this.removeFromVisitedButton()}
         </div>
       );
-    } else if (bucketlist) {
+    } if (bucketlist) {
       return (
         <div className="save-buttons-container">
           {this.addToVisitedButton()}
           {this.removeFromBucketlistButton()}
         </div>
       );
-    } else {
-      return (
+    }
+    return (
         <div className="save-buttons-container">
           {this.addToVisitedButton()}
           {this.addToBucketlistButton()}
         </div>
-      );
-    }
+    );
   };
 
   render() {

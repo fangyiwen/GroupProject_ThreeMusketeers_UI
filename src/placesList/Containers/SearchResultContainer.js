@@ -1,37 +1,33 @@
-import React from "react";
-import { withRouter } from "react-router-dom";
-import API from "./../../Api";
-import SitesContainer from "./SitesContainer";
-import LoadingContainer from "./LoadingContainer";
-import { sites } from "./../../shared/components/data/whl.json";
+import React from 'react';
+import { withRouter } from 'react-router-dom';
+import API from '../../Api';
+import SitesContainer from './SitesContainer';
+import LoadingContainer from './LoadingContainer';
+import { sites } from '../../shared/components/data/whl.json';
 
 class SearchResultsContainer extends React.PureComponent {
   state = {
     sites: [],
-    searchCriteria: "",
+    searchCriteria: '',
     loading: true,
   };
 
   getSearchResultsBasedOnURL = () => {
-    if (this.props.match.url.split("/").includes("search_by_tag")) {
-      let split_url = this.props.match.url.split("/");
-      let tag = split_url[split_url.length - 1];
-      API.searchByTag(tag).then((data) =>
-        this.setState({
-          sites: data,
-          searchCriteria: tag,
-          loading: false,
-        })
-      );
+    if (this.props.match.url.split('/').includes('search_by_tag')) {
+      const split_url = this.props.match.url.split('/');
+      const tag = split_url[split_url.length - 1];
+      API.searchByTag(tag).then((data) => this.setState({
+        sites: data,
+        searchCriteria: tag,
+        loading: false,
+      }));
     } else {
-      let url = this.props.match.url;
-      API.search(url).then((data) =>
-        this.setState({
-          sites: data,
-          searchCriteria: url.split("=")[1].split("+").join(" "),
-          loading: false,
-        })
-      );
+      const { url } = this.props.match;
+      API.search(url).then((data) => this.setState({
+        sites: data,
+        searchCriteria: url.split('=')[1].split('+').join(' '),
+        loading: false,
+      }));
     }
     window.scrollTo(0, 0);
   };
@@ -42,16 +38,16 @@ class SearchResultsContainer extends React.PureComponent {
 
   async getdataList() {
     //   eliminate +
-    var { region } = this.props.match.params;
-    var newRegion = region.replace(/\+/g, " ");
-    let url = this.props.match.url;
-    var data = await API.getListData();
-    var newList = data.places.filter(
-      (item) => item.world_heritage_list.region === newRegion
+    const { region } = this.props.match.params;
+    const newRegion = region.replace(/\+/g, ' ');
+    const { url } = this.props.match;
+    const data = await API.getListData();
+    const newList = data.places.filter(
+      (item) => item.world_heritage_list.region === newRegion,
     );
     this.setState({
       sites: newList,
-      searchCriteria: url.split("/").pop().replace(/\+/g, " "),
+      searchCriteria: url.split('/').pop().replace(/\+/g, ' '),
       loading: false,
     });
   }
