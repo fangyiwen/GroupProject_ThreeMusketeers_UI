@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import {
   BrowserRouter as Router, Route, Redirect, Switch,
 } from 'react-router-dom';
@@ -24,13 +24,25 @@ const App = () => {
 
   const login = useCallback((uid, token) => {
     setToken(token);
+    localStorage.setItem(
+      'userData',
+      JSON.stringify({ userId: uid, token }),
+    );
     setUserId(uid);
   }, []);
 
   const logout = useCallback(() => {
     setToken(null);
     setUserId(null);
+    localStorage.removeItem('userData');
   }, []);
+
+  useEffect(() => {
+    const storedData = JSON.parse(localStorage.getItem('userData'));
+    if (storedData && storedData.token) {
+      login(storedData.userId, storedData.token);
+    }
+  }, [login]);
 
   let routes;
 
@@ -43,15 +55,15 @@ const App = () => {
         <Route path="/search" exact>
           <Search />
         </Route>
-          <Route path="/list" exact>
-              <HomeContainer />
-          </Route>
-          <Route path="/list/search/:region" exact>
-              <SearchResultsContainer/>
-          </Route>
-          <Route path="/list/sites/:id" exact>
-              <SiteContainer/>
-          </Route>
+        <Route path="/list" exact>
+          <HomeContainer />
+        </Route>
+        <Route path="/list/search/:region" exact>
+          <SearchResultsContainer/>
+        </Route>
+        <Route path="/list/sites/:id" exact>
+          <SiteContainer/>
+        </Route>
         <Route path="/" exact>
           <Users />
         </Route>
@@ -76,16 +88,16 @@ const App = () => {
         <Route path="/search" exact>
           <Search />
         </Route>
-          <Route path="/list" exact>
-              <HomeContainer />
-          </Route>
-          <Route path="/list/search/:region" exact>
-              <SearchResultsContainer/>
-          </Route>
-          <Route path="/list/sites/:id" exact>
-              <SiteContainer/>
-          </Route>
-          <Route path="/" exact>
+        <Route path="/list" exact>
+          <HomeContainer />
+        </Route>
+        <Route path="/list/search/:region" exact>
+          <SearchResultsContainer/>
+        </Route>
+        <Route path="/list/sites/:id" exact>
+          <SiteContainer/>
+        </Route>
+        <Route path="/" exact>
           <Users />
         </Route>
         <Route path="/:userId/places" exact>
