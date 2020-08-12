@@ -22,7 +22,6 @@ class SiteContainer extends React.Component {
     this.getdataList();
   }
 
-  //   没有后台接口用这个区拿数据
   async getdataList() {
     var id = this.props.match.params.id;
     var newList = await API.getListDataById(id);
@@ -30,28 +29,7 @@ class SiteContainer extends React.Component {
     this.setState({
       site: newList.place,
       loading: false,
-
-      //   这两个不知道干啥的
-      //   bucketlist: this.props.bucketlist
-      //     .map((site) => site.id)
-      //     .includes(data.id),
-      //   visited: this.props.visited.map((site) => site.id).includes(data.id),
     });
-  }
-
-  //   有后台接口了就用这个区请求参数
-  getDataByParams() {
-    API.getSite(this.props.match.params["id"]).then((data) =>
-      this.setState({
-        site: data,
-        bucketlist: this.props.bucketlist
-          .map((site) => site.id)
-          .includes(data.id),
-        visited: this.props.visited.map((site) => site.id).includes(data.id),
-        loading: false,
-      })
-    );
-    window.scrollTo(0, 0);
   }
 
   handleAddToBucketlist = (site) => {

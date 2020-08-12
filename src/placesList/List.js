@@ -32,7 +32,6 @@ class List extends React.Component {
         })
         .catch((error) => console.log(error));
     }
-    this.getSampleSites();
   }
 
   signin = (user) => {
