@@ -6,33 +6,35 @@ import Button from '../../shared/components/FormElements/Button';
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_MINLENGTH,
-  VALIDATOR_REQUIRE
+  VALIDATOR_REQUIRE,
 } from '../../shared/util/validators';
 import { useForm } from '../../shared/hooks/form-hook';
 import { AuthContext } from '../../shared/context/auth-context';
 import './Auth.css';
-import ImageUpload from "../../shared/components/FormElements/ImageUpload";
-import {useHttpClient} from "../../shared/hooks/http-hooks";
-import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
-import ErrorModal from "../../shared/components/UIElements/ErrorModal";
+import ImageUpload from '../../shared/components/FormElements/ImageUpload';
+import { useHttpClient } from '../../shared/hooks/http-hooks';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
+import ErrorModal from '../../shared/components/UIElements/ErrorModal';
 
 const Auth = () => {
   const auth = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const {
+    isLoading, error, sendRequest, clearError,
+  } = useHttpClient();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
       email: {
         value: '',
-        isValid: false
+        isValid: false,
       },
       password: {
         value: '',
-        isValid: false
-      }
+        isValid: false,
+      },
     },
-    false
+    false,
   );
 
   const switchModeHandler = () => {
@@ -41,9 +43,9 @@ const Auth = () => {
         {
           ...formState.inputs,
           name: undefined,
-          avatar: undefined
+          avatar: undefined,
         },
-        formState.inputs.email.isValid && formState.inputs.password.isValid
+        formState.inputs.email.isValid && formState.inputs.password.isValid,
       );
     } else {
       setFormData(
@@ -51,34 +53,34 @@ const Auth = () => {
           ...formState.inputs,
           name: {
             value: '',
-            isValid: false
+            isValid: false,
           },
           avatar: {
             value: null,
-            isValid: false
-          }
+            isValid: false,
+          },
         },
-        false
+        false,
       );
     }
-    setIsLoginMode(prevMode => !prevMode);
+    setIsLoginMode((prevMode) => !prevMode);
   };
 
-  const authSubmitHandler = async event => {
+  const authSubmitHandler = async (event) => {
     event.preventDefault();
-    //console.log(formState.inputs);
+    // console.log(formState.inputs);
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(
-            'http://localhost:5000/api/users/login',
-            'POST',
-            JSON.stringify({
-              email: formState.inputs.email.value,
-              password: formState.inputs.password.value
-            }),
-            {
-              'Content-Type': 'application/json'
-            }
+          'http://localhost:5000/api/users/login',
+          'POST',
+          JSON.stringify({
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+          }),
+          {
+            'Content-Type': 'application/json',
+          },
         );
         auth.login(responseData.user.id);
       } catch (err) {
@@ -93,11 +95,11 @@ const Auth = () => {
         formData.append('avatar', formState.inputs.avatar.value);
         console.log(formData);
         const responseData = await sendRequest(
-            'http://localhost:5000/api/users/signup',
-            'POST',
-            formData
+          'http://localhost:5000/api/users/signup',
+          'POST',
+          formData,
         );
-        console.log("sign up");
+        console.log('sign up');
         console.log(responseData);
         auth.login(responseData.user.id);
       } catch (err) {

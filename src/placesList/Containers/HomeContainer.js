@@ -1,10 +1,9 @@
-import React from "react";
-import SitesContainer from "./SitesContainer";
-import { Icon } from "semantic-ui-react";
-import { Link, withRouter } from "react-router-dom";
+import React from 'react';
+import { Icon } from 'semantic-ui-react';
+import { Link, withRouter } from 'react-router-dom';
+import SitesContainer from './SitesContainer';
 
-
-import Api from "./../../Api";
+import Api from '../../Api';
 
 class HomeContainer extends React.Component {
   state = {
@@ -18,8 +17,8 @@ class HomeContainer extends React.Component {
 
   componentDidMount() {
     this.init();
-    this.props.africa &&
-      this.setState({
+    this.props.africa
+      && this.setState({
         loading: false,
       });
     window.scrollTo(0, 0);
@@ -27,20 +26,20 @@ class HomeContainer extends React.Component {
 
   //   init the data
   init() {
-    this.getdatalist("Africa", "africa");
-    this.getdatalist("Arab States", "arabStates");
-    this.getdatalist("Asia and the Pacific", "asiaPacific");
-    this.getdatalist("Europe and North America", "europeNorthAmerica");
+    this.getdatalist('Africa', 'africa');
+    this.getdatalist('Arab States', 'arabStates');
+    this.getdatalist('Asia and the Pacific', 'asiaPacific');
+    this.getdatalist('Europe and North America', 'europeNorthAmerica');
     this.getdatalist(
-      "Latin America and the Caribbean",
-      "latinAmericaCaribbean"
+      'Latin America and the Caribbean',
+      'latinAmericaCaribbean',
     );
   }
 
   async getdatalist(query, dataListName) {
-    var data = await Api.getListData();
-    var newList = data.places.filter(
-      (item) => item.world_heritage_list.region === query
+    const data = await Api.getListData();
+    const newList = data.places.filter(
+      (item) => item.world_heritage_list.region === query,
     );
     this.setState({
       [dataListName]: newList,
@@ -79,7 +78,7 @@ class HomeContainer extends React.Component {
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
-                  <Link to={"/list/search/Africa"}>
+                  <Link to={'/list/search/Africa'}>
                     See more from Africa
                     <Icon name="chevron right" size="small" />
                   </Link>
@@ -99,7 +98,7 @@ class HomeContainer extends React.Component {
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
-                  <Link to={"/list/search/Arab+States"}>
+                  <Link to={'/list/search/Arab+States'}>
                     See more from Arab States
                     <Icon name="chevron right" size="small" />
                   </Link>
@@ -119,7 +118,7 @@ class HomeContainer extends React.Component {
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
-                  <Link to={"/list/search/Asia+and+the+Pacific"}>
+                  <Link to={'/list/search/Asia+and+the+Pacific'}>
                     See more from Asia and the Pacific
                     <Icon name="chevron right" size="small" />
                   </Link>
@@ -139,7 +138,7 @@ class HomeContainer extends React.Component {
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
-                  <Link to={"/list/search/Europe+and+North+America"}>
+                  <Link to={'/list/search/Europe+and+North+America'}>
                     See more from Europe and North America
                     <Icon name="chevron right" size="small" />
                   </Link>
@@ -159,7 +158,7 @@ class HomeContainer extends React.Component {
               />
               <div className="site-description-link-container">
                 <div className="site-description-link-container-text">
-                  <Link to={"/list/search/Latin+America+and+the+Caribbean"}>
+                  <Link to={'/list/search/Latin+America+and+the+Caribbean'}>
                     See more from Latin America and the Caribbean
                     <Icon name="chevron right" size="small" />
                   </Link>

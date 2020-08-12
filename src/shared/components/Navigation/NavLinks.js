@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../context/auth-context';
 import './NavLinks.css';
 
-const NavLinks = props => {
+const NavLinks = (props) => {
   const auth = useContext(AuthContext);
 
   return (
@@ -14,7 +14,7 @@ const NavLinks = props => {
           HOME
         </NavLink>
       </li>
-      
+
       <li>
         <NavLink to="/search" exact>
           VIEW MAPS
@@ -25,7 +25,7 @@ const NavLinks = props => {
                  VIEW SITES
             </NavLink>
         </li>
-      
+
       <li>
         <NavLink to="/" exact>
           ALL USERS

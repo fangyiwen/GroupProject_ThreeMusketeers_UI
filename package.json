@@ -6,11 +6,12 @@
     "node": "12.11.1"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.34",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@types/googlemaps": "^3.39.11",
-    "eslint": "^6.6.0",
+    "google-map-react": "^2.0.8",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-google-autocomplete": "^1.2.6",
@@ -21,7 +22,9 @@
     "react-places-autocomplete": "^7.3.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
+    "react-spinners": "^0.9.0",
     "react-transition-group": "^4.3.0",
+    "semantic-ui-react": "^1.1.1",
     "serve": "^11.3.2",
     "typescript": "^3.9.7"
   },
@@ -30,7 +33,9 @@
     "#start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . || exit 0",
+    "lint-fix": "eslint . --fix || exit 0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,9 +53,9 @@
     ]
   },
   "devDependencies": {
-    "@emotion/core": "^10.0.28",
-    "google-map-react": "^2.0.8",
-    "react-spinners": "^0.9.0",
-    "semantic-ui-react": "^1.1.1"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
   }
 }
