@@ -5,8 +5,10 @@ UI repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMuske
 
 API repo link: https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_API
 
+Heroku Deployment Link: https://three-musketeers-ui.herokuapp.com/
+
 ---
-UI Folder Structure - Iteration 1
+UI Folder Structure - Iteration 3
 ```
 ├── UNESCO_UI
 │	├── public
@@ -26,9 +28,33 @@ UI Folder Structure - Iteration 1
 │	│	├── user
 │	│	│   ├── components
 │	│	│   ├── pages
+│	│	├── placesList
+│	│	│   ├── components
+│	│	│   ├── data
+│	│	│   ├── images
 ```
 ---
 ## Progress
+## Iteration 3
+
+![pic1](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr3-1.png)
+
+![pic2](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr3-2.png)
+
+![pic3](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr3-3.png)
+
+![pic4](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr3-4.png)
+
+![pic5](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr3-5.png)
+
+![pic5](https://github.ccs.neu.edu/NEU-CS5610-SU20/GroupProject_ThreeMusketeers_UI/blob/master/src/shared/components/UIElements/images/screenshot-itr3-6.png)
+
+- Fulfill the image uploading feature that enable users to upload profile avatar and sites images.
+- Add authentication and authorization for front end part.
+- Add view site pages that shows all sites also enable users to search sites by the region.
+- Connect front end with back-end.
+- Deploy the website to Heroku.
+
 
 ## Iteration 2
 
