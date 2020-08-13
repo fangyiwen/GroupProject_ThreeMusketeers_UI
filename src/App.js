@@ -28,12 +28,11 @@ const App = () => {
   const login = useCallback((uid, token, expirationDate) => {
     setToken(token);
     setUserId(uid);
-    const tokenExpirationDate =
-      expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
+    const tokenExpirationDate = expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
     setTokenExpirationDate(tokenExpirationDate);
     localStorage.setItem(
       'userData',
-      JSON.stringify({ userId: uid, token: token, expiration: tokenExpirationDate.toISOString() })
+      JSON.stringify({ userId: uid, token, expiration: tokenExpirationDate.toISOString() }),
     );
   }, []);
 
@@ -65,7 +64,7 @@ const App = () => {
   if (token) {
     routes = (
       <Switch>
-        <Route path="/home" exact>
+        <Route path="/" exact>
           <Home />
         </Route>
         <Route path="/search" exact>
@@ -80,7 +79,7 @@ const App = () => {
         <Route path="/list/sites/:id" exact>
           <SiteContainer/>
         </Route>
-        <Route path="/" exact>
+        <Route path="/users" exact>
           <Users />
         </Route>
         <Route path="/:userId/places" exact>
@@ -98,7 +97,7 @@ const App = () => {
   } else {
     routes = (
       <Switch>
-        <Route path="/home" exact>
+        <Route path="/" exact>
           <Home />
         </Route>
         <Route path="/search" exact>
@@ -113,7 +112,7 @@ const App = () => {
         <Route path="/list/sites/:id" exact>
           <SiteContainer/>
         </Route>
-        <Route path="/" exact>
+        <Route path="/users" exact>
           <Users />
         </Route>
         <Route path="/:userId/places" exact>
