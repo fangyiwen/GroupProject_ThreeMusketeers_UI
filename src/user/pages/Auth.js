@@ -84,7 +84,7 @@ const Auth = () => {
         );
         auth.login(responseData.user.id, responseData.token);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     } else {
       try {
@@ -93,17 +93,17 @@ const Auth = () => {
         formData.append('username', formState.inputs.name.value);
         formData.append('password', formState.inputs.password.value);
         formData.append('avatar', formState.inputs.avatar.value);
-        console.log(formData);
+        // console.log(formData);
         const responseData = await sendRequest(
           `${process.env.REACT_APP_BACKEND_URL}/users/signup`,
           'POST',
           formData,
         );
-        console.log('sign up');
-        console.log(responseData);
+        // console.log('sign up');
+        // console.log(responseData);
         auth.login(responseData.user.id);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
   };

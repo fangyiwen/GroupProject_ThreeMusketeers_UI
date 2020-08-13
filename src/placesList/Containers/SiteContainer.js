@@ -51,7 +51,7 @@ class SiteContainer extends React.Component {
 
   render() {
     const { site } = this.state;
-    console.log('site -> :', site);
+    // console.log('site -> :', site);
     const states = site.world_heritage_list.states
       ? site.world_heritage_list.states.split(',')
       : [];

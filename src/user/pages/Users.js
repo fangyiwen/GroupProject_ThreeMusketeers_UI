@@ -31,7 +31,7 @@ const Users = () => {
               <LoadingSpinner />
             </div>
         )}
-        {console.log(loadedUsers)};
+        {/* {console.log(loadedUsers)}; */}
         {!isLoading && loadedUsers && <UsersList items={loadedUsers} />}
       </React.Fragment>
   );

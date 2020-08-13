@@ -31,8 +31,8 @@ export const useHttpClient = () => {
         if (!response.ok) {
           throw new Error(responseData.message);
         }
-        console.log(responseData);
-        console.log(responseData.message);
+        // console.log(responseData);
+        // console.log(responseData.message);
         setIsLoading(false);
         return responseData;
       } catch (err) {
